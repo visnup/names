@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
+import { max, maxBy, min, minBy } from 'lodash'
 
 import App from './app'
 
@@ -9,6 +10,7 @@ const store = createStore((state, action) => {
   if (typeof state === 'undefined') return {
     name: null,
     names: [],
+    extents: [],
     countsByName: {}
   }
 
@@ -19,8 +21,13 @@ const store = createStore((state, action) => {
     return { ...state, name: null, names: [ ...state.names, action.name ] }
 
   case 'countsFetch':
+    let extents = [
+      min([state.extents[0], minBy(action.counts._all, 'year').year]),
+      max([state.extents[0], maxBy(action.counts._all, 'year').year])
+    ]
     return {
       ...state,
+      extents,
       countsByName: {
         ...state.countsByName,
         [action.name]: action.counts
@@ -33,7 +40,7 @@ const store = createStore((state, action) => {
 },
 applyMiddleware(
   require('redux-thunk').default,
-  //require('redux-logger')()
+  require('redux-logger')()
 ))
 
 render(

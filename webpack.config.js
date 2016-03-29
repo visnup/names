@@ -32,14 +32,14 @@ module.exports = {
 
       { test: /\.jsx?$/,
         loader: 'react-hot',
-        exclude: /node_modules|mapbox-gl/
+        exclude: /node_modules/
       },
       { test: /\.jsx?$/,
         loader: 'babel',
         query: {
           presets: ['es2015', 'react', 'stage-1']
         },
-        exclude: /node_modules|mapbox-gl/
+        exclude: /node_modules/
       }
     ]
   },

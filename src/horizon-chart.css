@@ -1,0 +1,20 @@
+:local(.className) {
+  height: 5em;
+  font-size: x-small;
+
+  .axis {
+    shape-rendering: crispEdges;
+
+    line, path {
+      fill: none;
+      stroke: black;
+    }
+  }
+
+  g.gender {
+    path {
+      fill: none;
+      stroke: black;
+    }
+  }
+}

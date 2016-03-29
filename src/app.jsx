@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import classnames from 'classnames'
 
+import css from './app.css'
 import Name from './name'
 
 class App extends Component {
@@ -11,18 +13,20 @@ class App extends Component {
   }
 
   render() {
+    let cx = classnames(css.className, 'container-fluid')
     return (
-      <div>
-        {this.props.names.map((name) => {
-          return <Name name={name} key={name} />
-        })}
+      <div className={cx}>
         <form onSubmit={this.onSubmit}>
           <input
             type="text"
             value={this.props.name}
             onChange={this.onChange}
+            placeholder="New Name"
             autoFocus />
         </form>
+        {this.props.names.map((name) => {
+          return <Name name={name} showDetails key={name} />
+        })}
       </div>
     )
   }
