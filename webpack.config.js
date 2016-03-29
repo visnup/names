@@ -12,8 +12,6 @@ module.exports = {
       'classnames',
       'd3',
       'lodash',
-      '@visnup/mapbox-gl/dist/mapbox-gl.css',
-      '@visnup/mapbox-gl/dist/mapbox-gl.js',
       'moment',
       'react',
       'react-dom'
@@ -58,7 +56,7 @@ module.exports = {
   ] },
 
   plugins: [
-    new HtmlWebpackPlugin({ title: 'Opendoor Insights' }),
+    new HtmlWebpackPlugin({ title: 'Names' }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: process.env.NODE_ENV ?
@@ -67,6 +65,9 @@ module.exports = {
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en$/),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new webpack.ProvidePlugin({
+      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
   ],
 
