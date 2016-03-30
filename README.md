@@ -18,8 +18,31 @@ names
 
 index: name, state, year
 
-[1]: 
+[1]:
 
 Visualization
 -------------
-Horizon chart
+Horizon charts
+
+State
+-----
+```javascript
+{
+  newName: null,
+  names: [
+    { name, expanded, counts }
+  ],
+
+  extents: []
+}
+```
+
+TODO
+----
+
+- font
+- toggle state display
+- sort states by total descending
+  - configurable
+- state map
+- hover to show values

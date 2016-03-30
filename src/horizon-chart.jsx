@@ -1,19 +1,21 @@
 import React, { Component, PropTypes } from 'react'
+import classnames from 'classnames'
 import d3 from 'd3'
 import horizon from 'd3-plugins-dist/dist/mbostock/horizon/es6'
-import { sortBy } from 'lodash'
 
 import css from './horizon-chart.css'
 import margin from './margin'
 
 class HorizonChart extends Component {
   static propTypes = {
+    className: PropTypes.string,
     counts: PropTypes.array,
     extents: PropTypes.array
   }
 
   render() {
-    return <div {...css} ref="container"></div>
+    let cx = classnames(css.className, this.props.className)
+    return <div className={cx} ref="container"></div>
   }
 
   componentDidMount() {

@@ -1,6 +1,6 @@
 :local(.className) {
   height: 1.5em;
-  .name & {
+  &.lg {
     height: 4em;
   }
   font-size: x-small;
