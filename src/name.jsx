@@ -19,8 +19,8 @@ class Name extends Component {
     return (
       <div {...css}>
         <div className="row middle-xs" onClick={this.onClick}>
-          <div className="col-xs-1">
-            <div className="row bottom-xs">
+          <div className="col-xs-2">
+            <div className="row middle-xs">
               <div className="col-xs-2">
                 <i className="material-icons">
                   {this.props.expanded ? 'expand_less' : 'expand_more'}
@@ -31,7 +31,7 @@ class Name extends Component {
               </div>
             </div>
           </div>
-          <div className="col-xs-11">
+          <div className="col-xs-10">
             <HorizonChart className="lg"
               counts={this.props.counts && this.props.counts._all}
               extents={this.props.extents} />
@@ -40,9 +40,11 @@ class Name extends Component {
         {this.props.expanded &&
           map(omit(this.props.counts, '_all'), (counts, state) => {
             return (
-              <div key={state} className="row bottom-xs detail">
-                <div className="col-xs-1 end-xs">{state}</div>
-                <div className="col-xs-11">
+              <div key={state} className="row middle-xs">
+                <div className="col-xs-2 end-xs">
+                  <h6>{state}</h6>
+                </div>
+                <div className="col-xs-10">
                   <HorizonChart
                     counts={this.props.counts[state]}
                     extents={this.props.extents} />

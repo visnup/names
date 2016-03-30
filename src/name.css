@@ -1,11 +1,17 @@
 :local(.className) {
+  .material-icons {
+    display: block;
+  }
+
   h3 {
     text-transform: capitalize;
     font-size: large;
     margin: 0;
   }
 
-  .detail {
+  h6 {
     font-size: x-small;
+    font-weight: normal;
+    margin: 0;
   }
 }

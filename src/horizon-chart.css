@@ -1,26 +1,14 @@
 :local(.className) {
   height: 1.5em;
-  &.lg {
-    height: 4em;
-  }
-  font-size: x-small;
-
-  .axis {
-    shape-rendering: crispEdges;
-
-    line, path {
-      fill: none;
-      stroke: black;
-    }
-  }
+  &.lg { height: 4em; }
 
   g.gender {
     &.F path {
-      fill: hsla(0, 50%, 50%, .5);
+      fill: hsla(210, 80%, 80%, .5);
     }
 
     &.M path {
-      fill: hsla(240, 50%, 50%, .5);
+      fill: hsla(0, 80%, 80%, .5);
     }
   }
 }

@@ -18,7 +18,7 @@ let reducer = (state = initialState, action) => {
     return {
       ...state,
       newName: null,
-      names: [ ...state.names, { name: action.name, expanded: false } ]
+      names: [ { name: action.name, expanded: false }, ...state.names ]
     }
   }
   case 'remove': {

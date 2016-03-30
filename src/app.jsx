@@ -19,8 +19,8 @@ class App extends Component {
     return (
       <div className={cx}>
         <h4>First names by Birth Year</h4>
-        <div className="row">
-          <div className="col-xs-1">
+        <div className="row bottom-xs">
+          <div className="col-xs-2">
             <form onSubmit={this.onSubmit}>
               <input
                 type="text"
@@ -30,7 +30,7 @@ class App extends Component {
                 autoFocus />
             </form>
           </div>
-          <div className="col-xs-11">
+          <div className="col-xs-10">
             <Axis extents={this.props.extents} />
           </div>
         </div>

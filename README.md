@@ -39,13 +39,10 @@ State
 
 TODO
 ----
-
-- font
-- toggle state display
 - sort states by total descending
   - configurable
-- state map
-- hover to show values
 - router
-- autocomplete
+- hover to show values
 - horizon y scales broken
+- state map
+- autocomplete

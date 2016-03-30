@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import d3 from 'd3'
-import { sortBy } from 'lodash'
 
-import css from './horizon-chart.css'
+import css from './axis.css'
 import margin from './margin'
 
 class Axis extends Component {
@@ -36,7 +35,6 @@ class Axis extends Component {
       .range([0, this.width])
     let xAxis = d3.svg.axis()
       .tickFormat(d => d)
-      .tickSize(3)
       .orient('top')
       .scale(x)
     this.xAxisGroup.call(xAxis)
