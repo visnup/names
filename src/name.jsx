@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { forEach, groupBy, isEmpty, map, omit, sumBy, values } from 'lodash'
+import { flatten, forEach, groupBy, isEmpty, map, omit, sumBy } from 'lodash'
 
 import css from './name.css'
-import Axis from './axis'
 import HorizonChart from './horizon-chart'
 
 class Name extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     showDetails: PropTypes.bool,
+    extents: PropTypes.array,
     counts: PropTypes.object,
     dispatch: PropTypes.func
   }
@@ -33,13 +33,8 @@ class Name extends Component {
 
     return (
       <div {...css}>
-        <div className="row">
-          <div className="col-xs-5 col-xs-offset-1">
-            <Axis extents={this.props.extents} />
-          </div>
-        </div>
-        <div className="row middle-xs">
-          <div className="col-xs-1">{this.props.name}</div>
+        <div className="row middle-xs" onClick={this.onClick}>
+          <div className="col-xs-1 name"><b>{this.props.name}</b></div>
           <div className="col-xs-5">
             <HorizonChart
               counts={this.props.counts._all}
@@ -58,11 +53,12 @@ class Name extends Component {
           .then(response => response.json())
           .then(json => {
             let byState = groupBy(json, 'state')
-            let byYear = groupBy(json, 'year')
-            forEach(byYear, (counts, year) => {
-              byYear[year] = { year, count: sumBy(counts, 'count') }
-            })
-            byState._all = values(byYear)
+            byState._all = flatten(map(groupBy(json, 'year'), (counts, year) => {
+              let byGender = groupBy(counts, 'gender')
+              return map(byGender, (counts, gender) => {
+                return { gender, year, count: sumBy(counts, 'count') }
+              })
+            }))
             return byState
           })
           .then(grouped => {
@@ -74,6 +70,10 @@ class Name extends Component {
           })
       })
     }
+  }
+
+  onClick = () => {
+    this.props.dispatch({ type: 'toggleDetails', name: this.props.name })
   }
 }
 

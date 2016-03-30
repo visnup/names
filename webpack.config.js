@@ -40,7 +40,9 @@ module.exports = {
           presets: ['es2015', 'react', 'stage-1']
         },
         exclude: /node_modules/
-      }
+      },
+
+      { test: /d3-plugins-dist\/dist/, loader: 'babel?presets=es2015' }
     ]
   },
 

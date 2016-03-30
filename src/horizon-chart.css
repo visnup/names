@@ -1,5 +1,5 @@
 :local(.className) {
-  height: 5em;
+  height: 2em;
   font-size: x-small;
 
   .axis {
@@ -12,9 +12,12 @@
   }
 
   g.gender {
-    path {
-      fill: none;
-      stroke: black;
+    &.F path {
+      fill: hsla(0, 50%, 50%, .5);
+    }
+
+    &.M path {
+      fill: hsla(240, 50%, 50%, .5);
     }
   }
 }

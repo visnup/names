@@ -20,7 +20,7 @@ const store = createStore((state, action) => {
   case 'add':
     return { ...state, name: null, names: [ ...state.names, action.name ] }
 
-  case 'countsFetch':
+  case 'countsFetch': {
     let extents = [
       min([state.extents[0], minBy(action.counts._all, 'year').year]),
       max([state.extents[0], maxBy(action.counts._all, 'year').year])
@@ -33,6 +33,7 @@ const store = createStore((state, action) => {
         [action.name]: action.counts
       }
     }
+  }
 
   default:
     return state

@@ -2,5 +2,9 @@
 @import 'flexboxgrid';
 
 :local(.className) {
-  font: medium sans-serif;
+  font: small sans-serif;
+
+  input {
+    width: 100%;
+  }
 }
