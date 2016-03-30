@@ -18,7 +18,10 @@ class App extends Component {
     let cx = classnames(css.className, 'container-fluid')
     return (
       <div className={cx}>
-        <h4>First names by Birth Year</h4>
+        <h4>
+          First names by Birth Year
+          (data from the <a href="https://www.ssa.gov/oact/babynames/limits.html">Social Security Administration</a>)
+        </h4>
         <div className="row bottom-xs">
           <div className="col-xs-2">
             <form onSubmit={this.onSubmit}>

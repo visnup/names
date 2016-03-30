@@ -5,6 +5,11 @@
 :local(.className) {
   font: small 'Catamaran', sans-serif;
 
+  a {
+    color: hsl(210, 50%, 50%);
+    text-decoration: none;
+  }
+
   form {
     input {
       width: 100%;

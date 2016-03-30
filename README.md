@@ -8,17 +8,17 @@ The data is loaded into ?, keyed by name.
 
 names
 
-  name | gender | state | year | count
-  -----+--------+-------+------+------
-  Loki | M      | AZ    | 2013 | 6
-  Loki | M      | CO    | 2014 | 5
-  Loki | M      | CA    | 2008 | 8
-  Loki | M      | CA    | 2009 | 6
-  ...
+name | gender | state | year | count
+-----+--------+-------+------+------
+Loki | M      | AZ    | 2013 | 6
+Loki | M      | CO    | 2014 | 5
+Loki | M      | CA    | 2008 | 8
+Loki | M      | CA    | 2009 | 6
+...
 
 index: name, state, year
 
-[1]:
+[1]: https://www.ssa.gov/oact/babynames/limits.html
 
 Visualization
 -------------
@@ -39,10 +39,10 @@ State
 
 TODO
 ----
-- sort states by total descending
-  - configurable
+- remove name
 - router
 - hover to show values
 - horizon y scales broken
+- sort states by total descending
 - state map
 - autocomplete
