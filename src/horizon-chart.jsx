@@ -36,7 +36,6 @@ class HorizonChart extends Component {
       .width(this.width)
       .height(this.height)
       .bands(2)
-      .colors(['hsla(0, 0%, 0%, .1)'])
 
     this.draw()
   }
@@ -81,6 +80,8 @@ class HorizonChart extends Component {
       }
       return counts
     })).call(this.horizon)
+    genderGroups.selectAll('path')
+      .style('fill', null)
   }
 }
 

@@ -39,7 +39,6 @@ State
 
 TODO
 ----
-- safari color bug
 - router
 - hover to show values
 - horizon y scales broken
