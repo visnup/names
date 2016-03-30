@@ -35,7 +35,7 @@ class App extends Component {
           </div>
         </div>
         {this.props.names.map((name) => {
-          return <Name name={name} showDetails key={name} />
+          return <Name {...name} key={name.name} />
         })}
       </div>
     )
@@ -54,7 +54,7 @@ class App extends Component {
 export default connect((state) => {
   return {
     extents: state.extents,
-    name: state.name,
+    name: state.newName,
     names: state.names
   }
 })(App)

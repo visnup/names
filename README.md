@@ -46,3 +46,5 @@ TODO
   - configurable
 - state map
 - hover to show values
+- router
+- autocomplete

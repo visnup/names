@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { flatten, forEach, groupBy, isEmpty, map, omit, sumBy } from 'lodash'
+import { flatten, groupBy, isEmpty, map, omit, sumBy } from 'lodash'
 
 import css from './name.css'
 import HorizonChart from './horizon-chart'
@@ -8,15 +8,16 @@ import HorizonChart from './horizon-chart'
 class Name extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    showDetails: PropTypes.bool,
-    extents: PropTypes.array,
+    expanded: PropTypes.bool,
     counts: PropTypes.object,
+
+    extents: PropTypes.array,
     dispatch: PropTypes.func
   }
 
   render() {
     let details = null
-    if (this.props.showDetails) {
+    if (this.props.expanded) {
       details = map(omit(this.props.counts, '_all'), (counts, state) => {
         return (
           <div key={state} className="row bottom-xs detail">
@@ -38,7 +39,7 @@ class Name extends Component {
             <div className="row bottom-xs">
               <div className="col-xs-2">
                 <i className="material-icons">
-                  {this.props.showDetails ? 'expand_less' : 'expand_more'}
+                  {this.props.expanded ? 'expand_less' : 'expand_more'}
                 </i>
               </div>
               <div className="col-xs-10 end-xs">
@@ -48,7 +49,7 @@ class Name extends Component {
           </div>
           <div className="col-xs-11">
             <HorizonChart className="lg"
-              counts={this.props.counts._all}
+              counts={this.props.counts && this.props.counts._all}
               extents={this.props.extents} />
           </div>
         </div>
@@ -84,13 +85,12 @@ class Name extends Component {
   }
 
   onClick = () => {
-    this.props.dispatch({ type: 'toggleDetails', name: this.props.name })
+    this.props.dispatch({ type: 'expand', name: this.props.name })
   }
 }
 
-export default connect((state, props) => {
+export default connect((state) => {
   return {
-    counts: state.countsByName[props.name] || {},
     extents: state.extents
   }
 })(Name)
