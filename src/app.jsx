@@ -18,18 +18,19 @@ class App extends Component {
     let cx = classnames(css.className, 'container-fluid')
     return (
       <div className={cx}>
+        <h4>First names by Birth Year</h4>
         <div className="row">
-          <div className="col-xs-1">
+          <div className="col-xs-2">
             <form onSubmit={this.onSubmit}>
               <input
                 type="text"
                 value={this.props.name}
                 onChange={this.onChange}
-                placeholder="New Name"
+                placeholder="New name"
                 autoFocus />
             </form>
           </div>
-          <div className="col-xs-8">
+          <div className="col-xs-10">
             <Axis extents={this.props.extents} />
           </div>
         </div>
