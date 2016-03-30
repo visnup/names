@@ -48,3 +48,4 @@ TODO
 - hover to show values
 - router
 - autocomplete
+- horizon y scales broken

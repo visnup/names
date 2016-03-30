@@ -16,22 +16,6 @@ class Name extends Component {
   }
 
   render() {
-    let details = null
-    if (this.props.expanded) {
-      details = map(omit(this.props.counts, '_all'), (counts, state) => {
-        return (
-          <div key={state} className="row bottom-xs detail">
-            <div className="col-xs-1 end-xs">{state}</div>
-            <div className="col-xs-11">
-              <HorizonChart
-                counts={this.props.counts[state]}
-                extents={this.props.extents} />
-            </div>
-          </div>
-        )
-      })
-    }
-
     return (
       <div {...css}>
         <div className="row middle-xs" onClick={this.onClick}>
@@ -53,7 +37,20 @@ class Name extends Component {
               extents={this.props.extents} />
           </div>
         </div>
-        {details}
+        {this.props.expanded &&
+          map(omit(this.props.counts, '_all'), (counts, state) => {
+            return (
+              <div key={state} className="row bottom-xs detail">
+                <div className="col-xs-1 end-xs">{state}</div>
+                <div className="col-xs-11">
+                  <HorizonChart
+                    counts={this.props.counts[state]}
+                    extents={this.props.extents} />
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }
