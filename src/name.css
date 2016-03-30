@@ -1,6 +1,10 @@
 :local(.className) {
-  .col-xs-offset--1 {
-    position: absolute;
+  .remove {
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  &:hover .remove {
+    opacity: 1;
   }
 
   .material-icons {

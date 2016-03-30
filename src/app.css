@@ -3,7 +3,7 @@
 @import 'flexboxgrid';
 
 :local(.className) {
-  font: small 'Catamaran', sans-serif;
+  font: medium 'Catamaran', sans-serif;
 
   a {
     color: hsl(210, 50%, 50%);

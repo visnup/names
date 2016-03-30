@@ -22,15 +22,15 @@ class Name extends Component {
           <div className="col-xs-2">
             <div className="row middle-xs">
               <div className="col-xs-2">
-                <i className="material-icons">
-                  {this.props.expanded ? 'expand_less' : 'expand_more'}
-                </i>
-              </div>
-              <div className="col-xs-2">
-                <i className="material-icons" onClick={this.remove}>remove</i>
+                <i className="material-icons remove" onClick={this.remove}>delete</i>
               </div>
               <div className="col-xs-8 end-xs">
                 <h3>{this.props.name}</h3>
+              </div>
+              <div className="col-xs-2">
+                <i className="material-icons">
+                  {this.props.expanded ? 'expand_less' : 'expand_more'}
+                </i>
               </div>
             </div>
           </div>
