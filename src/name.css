@@ -1,4 +1,8 @@
 :local(.className) {
+  .col-xs-offset--1 {
+    position: absolute;
+  }
+
   .material-icons {
     display: block;
   }

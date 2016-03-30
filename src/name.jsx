@@ -18,7 +18,7 @@ class Name extends Component {
   render() {
     return (
       <div {...css}>
-        <div className="row bottom-xs" onClick={this.onClick}>
+        <div className="row bottom-xs" onClick={this.expand}>
           <div className="col-xs-2">
             <div className="row middle-xs">
               <div className="col-xs-2">
@@ -26,7 +26,10 @@ class Name extends Component {
                   {this.props.expanded ? 'expand_less' : 'expand_more'}
                 </i>
               </div>
-              <div className="col-xs-10 end-xs">
+              <div className="col-xs-2">
+                <i className="material-icons" onClick={this.remove}>remove</i>
+              </div>
+              <div className="col-xs-8 end-xs">
                 <h3>{this.props.name}</h3>
               </div>
             </div>
@@ -83,7 +86,11 @@ class Name extends Component {
     }
   }
 
-  onClick = () => {
+  remove = (e) => {
+    e.stopPropagation()
+    this.props.dispatch({ type: 'remove', name: this.props.name })
+  }
+  expand = () => {
     this.props.dispatch({ type: 'expand', name: this.props.name })
   }
 }
