@@ -29,7 +29,7 @@ class App extends Component {
                 autoFocus />
             </form>
           </div>
-          <div className="col-xs-5">
+          <div className="col-xs-8">
             <Axis extents={this.props.extents} />
           </div>
         </div>

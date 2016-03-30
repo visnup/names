@@ -36,6 +36,7 @@ class Axis extends Component {
       .range([0, this.width])
     let xAxis = d3.svg.axis()
       .tickFormat(d => d)
+      .tickSize(2)
       .orient('top')
       .scale(x)
     this.xAxisGroup.call(xAxis)

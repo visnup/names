@@ -1,5 +1,8 @@
 :local(.className) {
-  height: 2em;
+  height: 1.5em;
+  .name & {
+    height: 4em;
+  }
   font-size: x-small;
 
   .axis {

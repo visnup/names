@@ -1,5 +1,11 @@
 :local(.className) {
   .name {
     text-transform: capitalize;
+    font-size: large;
+    margin-top: 1em;
+  }
+
+  .detail {
+    font-size: x-small;
   }
 }

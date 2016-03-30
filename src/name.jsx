@@ -19,9 +19,9 @@ class Name extends Component {
     if (this.props.showDetails) {
       details = map(omit(this.props.counts, '_all'), (counts, state) => {
         return (
-          <div key={state} className="row middle-xs">
-            <div className="col-xs-1">&nbsp;{state}</div>
-            <div className="col-xs-5">
+          <div key={state} className="row bottom-xs detail">
+            <div className="col-xs-1 end-xs">{state}</div>
+            <div className="col-xs-8">
               <HorizonChart
                 counts={this.props.counts[state]}
                 extents={this.props.extents} />
@@ -33,9 +33,9 @@ class Name extends Component {
 
     return (
       <div {...css}>
-        <div className="row middle-xs" onClick={this.onClick}>
-          <div className="col-xs-1 name"><b>{this.props.name}</b></div>
-          <div className="col-xs-5">
+        <div className="row bottom-xs name" onClick={this.onClick}>
+          <div className="col-xs-1"><b>{this.props.name}</b></div>
+          <div className="col-xs-8">
             <HorizonChart
               counts={this.props.counts._all}
               extents={this.props.extents} />
