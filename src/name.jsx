@@ -18,7 +18,7 @@ class Name extends Component {
   render() {
     return (
       <div {...css}>
-        <div className="row middle-xs" onClick={this.onClick}>
+        <div className="row bottom-xs" onClick={this.onClick}>
           <div className="col-xs-2">
             <div className="row middle-xs">
               <div className="col-xs-2">
