@@ -21,7 +21,9 @@ class App extends Component {
       <div className={cx}>
         <h4>
           First names by Birth Year
-          (data from the <a href="https://www.ssa.gov/oact/babynames/limits.html">Social Security Administration</a>)
+          (data from the <a href="https://www.ssa.gov/oact/babynames/limits.html">Social Security Administration</a>).
+
+          Code on <a href="https://github.com/visnup/names">GitHub</a>.
         </h4>
         <div className="row bottom-xs">
           <div className="col-xs-2">
