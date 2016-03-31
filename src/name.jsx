@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { flatten, groupBy, isEmpty, map, omit, sumBy } from 'lodash'
 
 import css from './name.css'
-import HorizonChart from './horizon-chart'
+import Horizon from './horizon'
 
 class Name extends Component {
   static propTypes = {
@@ -35,7 +35,7 @@ class Name extends Component {
             </div>
           </div>
           <div className="col-xs-10">
-            <HorizonChart className="lg"
+            <Horizon className="lg"
               counts={this.props.counts && this.props.counts._all}
               extents={this.props.extents} />
           </div>
@@ -48,7 +48,7 @@ class Name extends Component {
                   <h6>{state}</h6>
                 </div>
                 <div className="col-xs-10">
-                  <HorizonChart
+                  <Horizon
                     counts={this.props.counts[state]}
                     extents={this.props.extents} />
                 </div>

@@ -3,12 +3,12 @@ import classnames from 'classnames'
 import d3 from 'd3'
 import { uniqueId } from 'lodash'
 
-import css from './horizon-chart.css'
+import css from './horizon.css'
 import margin from './margin'
 
 const bands = 3
 
-class HorizonChart extends Component {
+class Horizon extends Component {
   static propTypes = {
     className: PropTypes.string,
     counts: PropTypes.array,
@@ -112,4 +112,4 @@ class HorizonChart extends Component {
   }
 }
 
-export default HorizonChart
+export default Horizon
