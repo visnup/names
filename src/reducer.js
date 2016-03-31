@@ -4,7 +4,7 @@ const initialState = {
   newName: null,
   names: [],
 
-  extents: []
+  extents: [1910, 2014]
 }
 
 let reducer = (state = initialState, action) => {

@@ -24,15 +24,15 @@ class HorizonChart extends Component {
     let { width, height } = this.refs.container.getBoundingClientRect()
     height = height || 64 // sometimes we're mounted before we have a height
     let svg = d3.select(this.refs.container).append('svg')
-      .attr('width', width)
-      .attr('height', height)
+        .attr('width', width)
+        .attr('height', height)
 
     this.width = width - margin.left - margin.right
     this.height = height - margin.top - margin.bottom
 
     let chart = svg.append('g')
-      .classed('chart', true)
-      .attr('transform', `translate(${margin.left}, ${margin.top})`)
+        .classed('chart', true)
+        .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
     // We'll use a defs to store the area path and the clip path.
     let defs = chart.selectAll('defs').data([null])
@@ -40,18 +40,19 @@ class HorizonChart extends Component {
     // The clip path is a simple rect.
     let id = uniqueId('d3_horizon_clip_')
     defs.enter().append('defs').append('clipPath')
-      .attr('id', id)
+        .attr('id', id)
       .append('rect')
         .attr('width', this.width)
         .attr('height', this.height)
 
     d3.transition(defs.select('rect'))
-      .attr('width', this.width)
-      .attr('height', this.height)
+        .attr('width', this.width)
+        .attr('height', this.height)
 
     // We'll use a container to clip all horizon layers at once.
     this.chart = chart.selectAll('g').data([null])
-      .enter().append('g')
+      .enter()
+      .append('g')
         .attr('clip-path', `url(#${id})`)
 
     this.draw()
@@ -85,27 +86,29 @@ class HorizonChart extends Component {
     // Instantiate each band with different transforms.
     let band = this.chart.selectAll('g.band')
       .data(d3.range(bands))
-    band.enter().append('g')
-      .classed('band', true)
-      .attr('transform', d => `translate(0, ${-this.height * d})`)
+    band.enter()
+      .append('g')
+        .classed('band', true)
+        .attr('transform', d => `translate(0, ${-this.height * d})`)
 
     // Draw a copy of the chart in each band.
     band.selectAll('g.gender').data(genders)
-      .enter().append('g')
+      .enter()
+      .append('g')
         .attr('class', d => `gender ${d.key}`)
-        .append('path')
-          .attr('d', (d) => {
-            // fill in undefined gaps
-            let counts = [], i = 0
-            for (let y = this.props.extents[0]; y <= this.props.extents[1]; y++) {
-              if (d.values[i] && d.values[i].year == y) {
-                counts.push(d.values[i++])
-              } else {
-                counts.push({ year: y })
-              }
+      .append('path')
+        .attr('d', (d) => {
+          // fill in undefined gaps
+          let counts = [], i = 0
+          for (let y = this.props.extents[0]; y <= this.props.extents[1]; y++) {
+            if (d.values[i] && d.values[i].year == y) {
+              counts.push(d.values[i++])
+            } else {
+              counts.push({ year: y })
             }
-            return area(counts)
-          })
+          }
+          return area(counts)
+        })
   }
 }
 

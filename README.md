@@ -39,6 +39,8 @@ State
 TODO
 ----
 - hover to show values
+- dynamic extents causing missing charts
+  - http://localhost:8080/#blake=0&sarah=0&julia=0&alex=0&joe=0
 - labels on top of chart
 - sort states by total descending
 - state map
