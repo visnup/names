@@ -32,7 +32,7 @@ class Name extends Component {
                 </h3>
               </div>
               <div className="col-xs-2 end-xs">
-                <i className="material-icons remove" onClick={this.remove}>
+                <i className="material-icons" onClick={this.remove}>
                   delete
                 </i>
               </div>

@@ -1,15 +1,14 @@
 :local(.className) {
-  .remove {
-    opacity: 0;
-    transition: opacity .2s;
-  }
-  &:hover .remove {
-    opacity: 1;
-  }
+  color: hsla(0, 0%, 0%, .8);
 
   .material-icons {
     vertical-align: middle;
     cursor: pointer;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  &:hover .material-icons {
+    opacity: 1;
   }
 
   h3, h6 {
