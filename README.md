@@ -44,4 +44,5 @@ TODO
 - labels on top of chart
 - sort states by total descending
 - state map
+- font flashing
 - autocomplete

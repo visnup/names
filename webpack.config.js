@@ -1,6 +1,6 @@
-var webpack = require('webpack');
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack')
+var path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 
@@ -73,17 +73,7 @@ module.exports = {
 
   devServer: {
     contentBase: 'public',
-    proxy: {
-      '*': {
-        target: 'http://localhost:8000',
-        bypass: function(req) {
-          if (req.headers.accept.indexOf('html') !== -1) {
-            console.log('Skipping proxy for browser request.');
-            return '/index.html';
-          }
-        }
-      }
-    }
+    proxy: { '*': 'http://localhost:8000' }
   }
 
-};
+}
