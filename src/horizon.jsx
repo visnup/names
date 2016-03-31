@@ -11,13 +11,19 @@ const bands = 3
 class Horizon extends Component {
   static propTypes = {
     className: PropTypes.string,
+    children: PropTypes.array,
+
     counts: PropTypes.array,
     extents: PropTypes.array
   }
 
   render() {
     let cx = classnames(css.className, this.props.className)
-    return <div className={cx} ref='container'></div>
+    return (
+      <div className={cx} ref='container'>
+        <label>{this.props.children}</label>
+      </div>
+    )
   }
 
   componentDidMount() {

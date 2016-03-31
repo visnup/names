@@ -10,9 +10,8 @@
     text-decoration: none;
   }
 
-  form {
-    input {
-      width: 100%;
-    }
+  input {
+    width: 100%;
+    box-sizing: border-box;
   }
 }

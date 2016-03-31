@@ -18,40 +18,36 @@ class Name extends Component {
   render() {
     return (
       <div {...css}>
-        <div className="row bottom-xs" onClick={this.expand}>
-          <div className="col-xs-2">
-            <div className="row middle-xs">
-              <div className="col-xs-2">
-                <i className="material-icons remove" onClick={this.remove}>delete</i>
+        <div onClick={this.expand}>
+          <Horizon className="lg"
+            counts={this.props.counts && this.props.counts._all}
+            extents={this.props.extents}>
+            <div className="row">
+              <div className="col-xs-10">
+                <h3>
+                  {this.props.name}
+                  <i className="material-icons">
+                    {this.props.expanded ? 'expand_less' : 'expand_more'}
+                  </i>
+                </h3>
               </div>
-              <div className="col-xs-8 end-xs">
-                <h3>{this.props.name}</h3>
-              </div>
-              <div className="col-xs-2">
-                <i className="material-icons">
-                  {this.props.expanded ? 'expand_less' : 'expand_more'}
+              <div className="col-xs-2 end-xs">
+                <i className="material-icons remove" onClick={this.remove}>
+                  delete
                 </i>
               </div>
             </div>
-          </div>
-          <div className="col-xs-10">
-            <Horizon className="lg"
-              counts={this.props.counts && this.props.counts._all}
-              extents={this.props.extents} />
-          </div>
+          </Horizon>
         </div>
         {this.props.expanded &&
           map(omit(this.props.counts, '_all'), (counts, state) => {
             return (
-              <div key={state} className="row middle-xs">
-                <div className="col-xs-2 end-xs">
+              <div key={state}>
+                <Horizon
+                  counts={this.props.counts[state]}
+                  extents={this.props.extents}>
                   <h6>{state}</h6>
-                </div>
-                <div className="col-xs-10">
-                  <Horizon
-                    counts={this.props.counts[state]}
-                    extents={this.props.extents} />
-                </div>
+                </Horizon>
               </div>
             )
           })

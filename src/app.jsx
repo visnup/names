@@ -25,21 +25,15 @@ class App extends Component {
 
           Code on <a href="https://github.com/visnup/names">GitHub</a>.
         </h4>
-        <div className="row bottom-xs">
-          <div className="col-xs-2">
-            <form onSubmit={this.onSubmit}>
-              <input
-                type="text"
-                value={this.props.name}
-                onChange={this.onChange}
-                placeholder="New name"
-                autoFocus />
-            </form>
-          </div>
-          <div className="col-xs-10">
-            <Axis extents={this.props.extents} />
-          </div>
-        </div>
+        <form onSubmit={this.onSubmit}>
+          <input
+            type="text"
+            value={this.props.name}
+            onChange={this.onChange}
+            placeholder="New name"
+            autoFocus />
+        </form>
+        <Axis extents={this.props.extents} />
         {this.props.names.map((name) => {
           return <Name {...name} key={name.name} />
         })}

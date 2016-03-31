@@ -2,6 +2,10 @@
   height: 2em;
   font-size: small;
 
+  svg {
+    overflow: visible;
+  }
+
   .axis {
     shape-rendering: crispEdges;
 

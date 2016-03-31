@@ -1,6 +1,14 @@
 :local(.className) {
+  position: relative;
   height: 1.5em;
   &.lg { height: 4em; }
+
+  label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
   g.gender {
     &.F path {
