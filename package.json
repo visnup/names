@@ -30,7 +30,6 @@
     "compression": "1.6.1",
     "css-loader": "0.23.1",
     "d3": "3.5.16",
-    "d3-plugins-dist": "3.2.0",
     "dsv-loader": "1.0.3",
     "exports-loader": "0.6.3",
     "express": "4.13.4",

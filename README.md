@@ -39,7 +39,7 @@ State
 TODO
 ----
 - hover to show values
-- horizon y scales broken
+- labels on top of chart
 - sort states by total descending
 - state map
 - autocomplete

@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import d3 from 'd3'
-import horizon from 'd3-plugins-dist/dist/mbostock/horizon/es6'
+import { uniqueId } from 'lodash'
 
 import css from './horizon-chart.css'
 import margin from './margin'
+
+const bands = 3
 
 class HorizonChart extends Component {
   static propTypes = {
@@ -15,12 +17,12 @@ class HorizonChart extends Component {
 
   render() {
     let cx = classnames(css.className, this.props.className)
-    return <div className={cx} ref="container"></div>
+    return <div className={cx} ref='container'></div>
   }
 
   componentDidMount() {
     let { width, height } = this.refs.container.getBoundingClientRect()
-    height = height || 64
+    height = height || 64 // sometimes we're mounted before we have a height
     let svg = d3.select(this.refs.container).append('svg')
       .attr('width', width)
       .attr('height', height)
@@ -28,15 +30,29 @@ class HorizonChart extends Component {
     this.width = width - margin.left - margin.right
     this.height = height - margin.top - margin.bottom
 
-    this.chart = svg.append('g')
+    let chart = svg.append('g')
       .classed('chart', true)
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-    this.horizon = horizon()
-      .defined(d => d.count)
-      .width(this.width)
-      .height(this.height)
-      .bands(2)
+    // We'll use a defs to store the area path and the clip path.
+    let defs = chart.selectAll('defs').data([null])
+
+    // The clip path is a simple rect.
+    let id = uniqueId('d3_horizon_clip_')
+    defs.enter().append('defs').append('clipPath')
+      .attr('id', id)
+      .append('rect')
+        .attr('width', this.width)
+        .attr('height', this.height)
+
+    d3.transition(defs.select('rect'))
+      .attr('width', this.width)
+      .attr('height', this.height)
+
+    // We'll use a container to clip all horizon layers at once.
+    this.chart = chart.selectAll('g').data([null])
+      .enter().append('g')
+        .attr('clip-path', `url(#${id})`)
 
     this.draw()
   }
@@ -46,7 +62,7 @@ class HorizonChart extends Component {
   }
 
   draw() {
-    if (!this.props.counts) return
+    if (!this.props.counts || !this.props.extents.length) return
 
     let x = d3.scale.linear()
       .domain(this.props.extents)
@@ -54,35 +70,42 @@ class HorizonChart extends Component {
 
     let y = d3.scale.linear()
       .domain([0, d3.max(this.props.counts, d => d.count)])
-      .range([0, this.height])
-
-    this.horizon
-      .x(d => x(d.year))
-      .y(d => y(d.count))
+      .range([this.height * bands, 0])
 
     let genders = d3.nest()
       .key(d => d.gender)
       .entries(this.props.counts)
 
-    let genderGroups = this.chart.selectAll('g.gender').data(genders)
-    genderGroups
+    let area = d3.svg.area()
+      .defined(d => d.count)
+      .x(d => x(d.year))
+      .y0(this.height * bands)
+      .y1(d => y(d.count))
+
+    // Instantiate each band with different transforms.
+    let band = this.chart.selectAll('g.band')
+      .data(d3.range(bands))
+    band.enter().append('g')
+      .classed('band', true)
+      .attr('transform', d => `translate(0, ${-this.height * d})`)
+
+    // Draw a copy of the chart in each band.
+    band.selectAll('g.gender').data(genders)
       .enter().append('g')
         .attr('class', d => `gender ${d.key}`)
-
-    genderGroups.data(genders.map(d => {
-      // fill in gaps
-      let counts = [], i = 0
-      for (let y = this.props.extents[0]; y <= this.props.extents[1]; y++) {
-        if (d.values[i] && d.values[i].year == y) {
-          counts.push(d.values[i++])
-        } else {
-          counts.push({ year: y })
-        }
-      }
-      return counts
-    })).call(this.horizon)
-    genderGroups.selectAll('path')
-      .style('fill', null)
+        .append('path')
+          .attr('d', (d) => {
+            // fill in undefined gaps
+            let counts = [], i = 0
+            for (let y = this.props.extents[0]; y <= this.props.extents[1]; y++) {
+              if (d.values[i] && d.values[i].year == y) {
+                counts.push(d.values[i++])
+              } else {
+                counts.push({ year: y })
+              }
+            }
+            return area(counts)
+          })
   }
 }
 
