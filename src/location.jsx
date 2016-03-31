@@ -13,7 +13,7 @@ class Location extends Component {
   }
 
   componentDidMount() {
-    forEach(location.hash.substring(1).split('&'), (pair) => {
+    forEach(location.hash.substring(1).split('&').reverse(), (pair) => {
       let [ name, expanded ] = pair.split('=')
       if (name)
         this.props.dispatch({ type: 'add', expanded: expanded == 1, name })
