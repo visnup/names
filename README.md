@@ -4,9 +4,6 @@ Names
 Data
 ----
 Data is from the [Social Security Administration][1]. It's organized by state.
-The data is loaded into ?, keyed by name.
-
-names
 
 name | gender | state | year | count
 -----+--------+-------+------+------
@@ -22,7 +19,9 @@ index: name, state, year
 
 Visualization
 -------------
-Horizon charts
+[Horizon charts][2]
+
+[2]: http://bl.ocks.org/mbostock/1483226
 
 State
 -----
@@ -39,7 +38,6 @@ State
 
 TODO
 ----
-- router
 - hover to show values
 - horizon y scales broken
 - sort states by total descending

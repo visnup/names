@@ -20,6 +20,7 @@ class HorizonChart extends Component {
 
   componentDidMount() {
     let { width, height } = this.refs.container.getBoundingClientRect()
+    height = height || 64
     let svg = d3.select(this.refs.container).append('svg')
       .attr('width', width)
       .attr('height', height)

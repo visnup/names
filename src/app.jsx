@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import classnames from 'classnames'
 
 import css from './app.css'
+import Location from './location'
 import Axis from './axis'
 import Name from './name'
 
@@ -40,6 +41,7 @@ class App extends Component {
         {this.props.names.map((name) => {
           return <Name {...name} key={name.name} />
         })}
+        <Location />
       </div>
     )
   }

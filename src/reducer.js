@@ -1,4 +1,4 @@
-import { map, max, maxBy, min, minBy, reject } from 'lodash'
+import { find, map, max, maxBy, min, minBy, reject } from 'lodash'
 
 const initialState = {
   newName: null,
@@ -15,11 +15,14 @@ let reducer = (state = initialState, action) => {
       newName: action.name
     }
   case 'add': {
-    return {
-      ...state,
-      newName: null,
-      names: [ { name: action.name, expanded: false }, ...state.names ]
-    }
+    if (find(state.names, { name: action.name }))
+      return state
+    else
+      return {
+        ...state,
+        newName: null,
+        names: [ { name: action.name, expanded: action.expanded }, ...state.names ]
+      }
   }
   case 'remove': {
     return {

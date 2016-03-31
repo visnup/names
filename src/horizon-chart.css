@@ -4,11 +4,11 @@
 
   g.gender {
     &.F path {
-      fill: hsla(210, 80%, 80%, .5);
+      fill: hsla(30, 80%, 80%, .5);
     }
 
     &.M path {
-      fill: hsla(0, 80%, 80%, .5);
+      fill: hsla(240, 80%, 80%, .5);
     }
   }
 }
