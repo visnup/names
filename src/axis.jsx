@@ -23,7 +23,7 @@ class Axis extends Component {
 
     this.xAxisGroup = svg.append('g')
       .classed('x axis', true)
-      .attr('transform', `translate(${margin.left}, ${height-1})`)
+      .attr('transform', `translate(${margin.left}, ${height-0.5})`)
 
     // TODO don't call this from here
     this.componentDidUpdate()
