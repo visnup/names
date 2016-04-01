@@ -20,7 +20,7 @@ class Name extends Component {
       <div {...css}>
         <div onClick={this.expand}>
           <Horizon className="lg"
-            counts={this.props.counts && this.props.counts._all}
+            counts={this.props.counts && this.props.counts.null}
             extents={this.props.extents}>
             <div className="row">
               <div className="col-xs-10">
@@ -40,7 +40,7 @@ class Name extends Component {
           </Horizon>
         </div>
         {this.props.expanded &&
-          map(omit(this.props.counts, '_all'), (counts, state) => {
+          map(omit(this.props.counts, 'null'), (counts, state) => {
             return (
               <div key={state}>
                 <Horizon
@@ -61,16 +61,7 @@ class Name extends Component {
       this.props.dispatch((dispatch) => {
         return fetch(`/names/${this.props.name}`)
           .then(response => response.json())
-          .then(json => {
-            let byState = groupBy(json, 'state')
-            byState._all = flatten(map(groupBy(json, 'year'), (counts, year) => {
-              let byGender = groupBy(counts, 'gender')
-              return map(byGender, (counts, gender) => {
-                return { gender, year, count: sumBy(counts, 'count') }
-              })
-            }))
-            return byState
-          })
+          .then(json => groupBy(json, 'state'))
           .then(grouped => {
             return dispatch({
               type: 'countsFetch',

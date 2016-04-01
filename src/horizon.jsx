@@ -64,8 +64,10 @@ class Horizon extends Component {
     this.draw()
   }
 
-  componentDidUpdate() {
-    this.draw()
+  componentDidUpdate(prevProps) {
+    if (this.props.counts !== prevProps.counts ||
+        this.props.extents !== prevProps.extents)
+      this.draw()
   }
 
   draw() {

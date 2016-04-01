@@ -44,8 +44,8 @@ let reducer = (state = initialState, action) => {
 
   case 'countsFetch': {
     let extents = [
-      min([state.extents[0], minBy(action.counts._all, 'year').year]),
-      max([state.extents[0], maxBy(action.counts._all, 'year').year])
+      min([state.extents[0], minBy(action.counts.null, 'year').year]),
+      max([state.extents[0], maxBy(action.counts.null, 'year').year])
     ]
     let names = map(state.names, (name) => {
       if (name.name === action.name)

@@ -5,24 +5,15 @@ const JSONStream = require('JSONStream')
 const knex = require('../data/knex')
 const startCase = require('lodash').startCase
 
-const columns = [
-  'name',
-  'gender',
-  'state',
-  'year',
-  'count'
-]
-
 router.get('/names/:name', (req, res) => {
-  res.type('json')
-
   let sql = knex
-    .select(columns)
+    .select([ 'name', 'gender', 'state', 'year', 'count' ])
     .from('names')
     .where('name', startCase(req.params.name.toLowerCase()))
     .stream()
   req.on('close', sql.end.bind(sql))
 
+  res.type('json')
   sql.pipe(JSONStream.stringify()).pipe(res)
 })
 

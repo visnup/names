@@ -8,14 +8,20 @@ DROP TABLE IF EXISTS names;
 CREATE TABLE names (
   name text NOT NULL,
   gender char(1) NOT NULL,
-  state char(2) NOT NULL,
+  state char(2),
   year int NOT NULL,
   count int NOT NULL
 );
 SQL
 
-cat ${PWD}/$(dirname $0)/ssa/*.TXT | \
+cat ${PWD}/$(dirname $0)/namesbystate/*.TXT | \
 psql -c 'COPY names (state, gender, year, name, count) FROM STDIN WITH CSV HEADER' ${DATABASE_URL}
+
+for file in ${PWD}/$(dirname $0)/names/yob*.txt; do
+  year=$(echo $file | sed 's/.*yob\([0-9]*\).txt/\1/')
+  cat $file | sed "s/^/${year},/" | \
+  psql -c "COPY names (year, name, gender, count) FROM STDIN WITH CSV HEADER" ${DATABASE_URL}
+done
 
 psql ${DATABASE_URL} <<SQL
 CREATE INDEX ON names (name, gender, state, year);
