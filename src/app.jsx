@@ -30,7 +30,7 @@ class App extends Component {
             type="text"
             value={this.props.name}
             onChange={this.onChange}
-            placeholder="New name"
+            placeholder="Add name"
             autoFocus />
         </form>
         <Axis extents={this.props.extents} />

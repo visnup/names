@@ -56,7 +56,7 @@ module.exports = {
   ] },
 
   plugins: [
-    new HtmlWebpackPlugin({ title: 'Names' }),
+    new HtmlWebpackPlugin({ template: './index.html' }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: process.env.NODE_ENV ?
