@@ -69,6 +69,7 @@ class Name extends Component {
               counts: grouped
             })
           })
+          .catch(e => console.error(e))
       })
     }
   }
@@ -82,8 +83,4 @@ class Name extends Component {
   }
 }
 
-export default connect((state) => {
-  return {
-    extents: state.extents
-  }
-})(Name)
+export default connect()(Name)

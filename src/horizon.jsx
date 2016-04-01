@@ -27,46 +27,42 @@ class Horizon extends Component {
   }
 
   componentDidMount() {
-    let { width, height } = this.refs.container.getBoundingClientRect()
-    height = height || 64 // sometimes we're mounted before we have a height
-    let svg = d3.select(this.refs.container).append('svg')
-        .attr('width', width)
-        .attr('height', height)
+    setTimeout(() => {
+      let { width, height } = this.refs.container.getBoundingClientRect()
+      let svg = d3.select(this.refs.container).append('svg')
+          .attr('width', width)
+          .attr('height', height)
 
-    this.width = width - margin.left - margin.right
-    this.height = height - margin.top - margin.bottom
+      this.width = width - margin.left - margin.right
+      this.height = height - margin.top - margin.bottom
 
-    let chart = svg.append('g')
-        .classed('chart', true)
-        .attr('transform', `translate(${margin.left}, ${margin.top})`)
+      let chart = svg.append('g')
+          .classed('chart', true)
+          .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-    // We'll use a defs to store the area path and the clip path.
-    let defs = chart.selectAll('defs').data([null])
+      // We'll use a defs to store the area path and the clip path.
+      let defs = chart.selectAll('defs').data([null])
 
-    // The clip path is a simple rect.
-    let id = uniqueId('d3_horizon_clip_')
-    defs.enter().append('defs').append('clipPath')
-        .attr('id', id)
-      .append('rect')
-        .attr('width', this.width)
-        .attr('height', this.height)
+      // The clip path is a simple rect.
+      let id = uniqueId('d3_horizon_clip_')
+      defs.enter().append('defs').append('clipPath')
+          .attr('id', id)
+        .append('rect')
+          .attr('width', this.width)
+          .attr('height', this.height)
 
-    d3.transition(defs.select('rect'))
-        .attr('width', this.width)
-        .attr('height', this.height)
+      // We'll use a container to clip all horizon layers at once.
+      this.chart = chart.selectAll('g').data([null])
+        .enter()
+        .append('g')
+          .attr('clip-path', `url(#${id})`)
 
-    // We'll use a container to clip all horizon layers at once.
-    this.chart = chart.selectAll('g').data([null])
-      .enter()
-      .append('g')
-        .attr('clip-path', `url(#${id})`)
-
-    this.draw()
+      this.draw()
+    })
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.counts !== prevProps.counts ||
-        this.props.extents !== prevProps.extents)
+    if (this.props.counts !== prevProps.counts || this.props.extents !== prevProps.extents)
       this.draw()
   }
 
