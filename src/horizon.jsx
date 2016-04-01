@@ -96,11 +96,13 @@ class Horizon extends Component {
         .attr('transform', d => `translate(0, ${-this.height * d})`)
 
     // Draw a copy of the chart in each band.
-    band.selectAll('g.gender').data(genders)
+    let genderGroups = band.selectAll('g.gender').data(genders)
+    genderGroups
       .enter()
       .append('g')
         .attr('class', d => `gender ${d.key}`)
       .append('path')
+    genderGroups.selectAll('path')
         .attr('d', (d) => {
           // fill in undefined gaps
           let counts = [], i = 0
