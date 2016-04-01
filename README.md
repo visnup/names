@@ -38,12 +38,12 @@ State
 
 TODO
 ----
-- labels overlap chart
 - hover to show values
-- dynamic extents causing missing charts
-  - http://localhost:8080/#blake=0&sarah=0&julia=0&alex=0&joe=0
 - sort states by total descending
 - state map
+- use query param and push state over hash
+  - link will normalize to the same page and not change data
+  - ?bob&joe=expanded&hillary
 - go to previous state from localStorage
 - font flashing
 - autocomplete
