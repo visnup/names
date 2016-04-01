@@ -11,7 +11,7 @@ const bands = 3
 class Horizon extends Component {
   static propTypes = {
     className: PropTypes.string,
-    children: PropTypes.array,
+    children: PropTypes.object,
 
     counts: PropTypes.array,
     extents: PropTypes.array
