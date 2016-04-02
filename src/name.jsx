@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { flatten, groupBy, isEmpty, map, omit, sumBy } from 'lodash'
+import { groupBy, isEmpty, map, omit } from 'lodash'
 
 import css from './name.css'
 import Horizon from './horizon'
