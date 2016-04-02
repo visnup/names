@@ -14,14 +14,14 @@ CREATE TABLE names (
 );
 SQL
 
-cat ${PWD}/$(dirname $0)/namesbystate/*.TXT | \
-psql -c 'COPY names (state, gender, year, name, count) FROM STDIN WITH CSV HEADER' ${DATABASE_URL}
-
 for file in ${PWD}/$(dirname $0)/names/yob*.txt; do
   year=$(echo $file | sed 's/.*yob\([0-9]*\).txt/\1/')
   cat $file | sed "s/^/${year},/" | \
-  psql -c "COPY names (year, name, gender, count) FROM STDIN WITH CSV HEADER" ${DATABASE_URL}
+  psql -c "COPY names (year, name, gender, count) FROM STDIN WITH CSV" ${DATABASE_URL}
 done
+
+cat ${PWD}/$(dirname $0)/namesbystate/*.TXT | \
+psql -c 'COPY names (state, gender, year, name, count) FROM STDIN WITH CSV HEADER' ${DATABASE_URL}
 
 psql ${DATABASE_URL} <<SQL
 CREATE INDEX ON names (name, gender, state, year);

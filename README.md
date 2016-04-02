@@ -44,6 +44,5 @@ TODO
 - use query param and push state over hash
   - link will normalize to the same page and not change data
   - ?bob&joe=expanded&hillary
-- go to previous state from localStorage
-- font flashing
+- load previous state from localStorage
 - autocomplete
