@@ -12,7 +12,7 @@ class Name extends Component {
     counts: PropTypes.object,
 
     extents: PropTypes.array,
-    brush: PropTypes.number,
+    year: PropTypes.number,
 
     dispatch: PropTypes.func
   }
@@ -25,22 +25,17 @@ class Name extends Component {
             className="lg"
             counts={this.props.counts && this.props.counts.null}
             extents={this.props.extents}
-            brush={this.props.brush}>
-            <div className="row">
-              <div className="col-xs-10">
-                <h3>
-                  {this.props.name}
-                  <i className="material-icons">
-                    {this.props.expanded ? 'expand_less' : 'expand_more'}
-                  </i>
-                </h3>
-              </div>
-              <div className="col-xs-2 end-xs">
-                <i className="material-icons" onClick={this.remove}>
-                  delete
-                </i>
-              </div>
-            </div>
+            year={this.props.year}>
+            <h3>
+              <i className="material-icons" onClick={this.remove}>
+                delete
+              </i>
+              <br/>
+              {this.props.name}
+              <i className="material-icons">
+                {this.props.expanded ? 'expand_less' : 'expand_more'}
+              </i>
+            </h3>
           </Horizon>
         </div>
         {this.props.expanded &&
@@ -50,7 +45,7 @@ class Name extends Component {
                 <Horizon
                   counts={this.props.counts[state]}
                   extents={this.props.extents}
-                  brush={this.props.brush}>
+                  year={this.props.year}>
                   <h6>{state}</h6>
                 </Horizon>
               </div>
@@ -89,5 +84,5 @@ class Name extends Component {
 }
 
 export default connect((state) => {
-  return { brush: state.brush }
+  return { year: state.year }
 })(Name)

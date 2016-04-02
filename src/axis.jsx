@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import d3 from 'd3'
+import { inRange } from 'lodash'
 
 import css from './axis.css'
 import margin from './margin'
@@ -7,43 +9,62 @@ import margin from './margin'
 class Axis extends Component {
   static propTypes = {
     extents: PropTypes.array,
-    brush: PropTypes.number
+    year: PropTypes.number,
+
+    dispatch: PropTypes.func
   }
 
   render() {
-    return <div {...css} ref="container"></div>
+    return (
+      <div {...css} ref="container">
+        <div className="rule" ref="rule"></div>
+      </div>
+    )
   }
 
   componentDidMount() {
-    let { width, height } = this.refs.container.getBoundingClientRect()
+    let { left, right, width, height } = this.refs.container.getBoundingClientRect()
     let svg = d3.select(this.refs.container).append('svg')
       .attr('width', width)
       .attr('height', height)
 
     this.x = d3.scale.linear()
       .range([0, width - margin.left - margin.right])
+    this.pageX = d3.scale.linear()
+      .range([ left - margin.left, right - margin.left - margin.right ])
 
     this.xAxisGroup = svg.append('g')
       .classed('x axis', true)
       .attr('transform', `translate(${margin.left}, ${height-0.5})`)
 
-    this.draw()
-
-    this.year = svg.append('text')
+    this.label = svg.append('text')
         .classed('count', true)
         .attr('y', height - 9)
+
+    window.addEventListener('mousemove', this.onMouseMove)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this.onMouseMove)
+  }
+
+  componentWillUpdate(props) {
+    if (this.props.extents !== props.extents) {
+      this.x.domain(props.extents)
+      this.pageX.domain(props.extents)
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.extents !== prevProps.extents)
       this.draw()
 
-    if (this.props.brush !== prevProps.brush)
+    if (this.props.extents !== prevProps.extents ||
+        this.props.year !== prevProps.year)
       this.brush()
   }
 
   draw() {
-    this.x.domain(this.props.extents)
     let xAxis = d3.svg.axis()
       .tickFormat(d => d)
       .orient('top')
@@ -52,11 +73,21 @@ class Axis extends Component {
   }
 
   brush() {
-    let year = Math.round(this.x.invert(this.props.brush))
-    this.year
-        .attr('x', this.props.brush - 10)
-        .text(year)
+    this.label
+        .attr('x', this.x(this.props.year) - 10)
+        .text(this.props.year)
+
+    d3.select(this.refs.rule)
+        .style('left', this.pageX(this.props.year) + 'px')
+  }
+
+  onMouseMove = (e) => {
+    let year = Math.floor(this.pageX.invert(e.pageX))
+    if (this.props.year !== year && inRange(year, this.props.extents[0], this.props.extents[1]+1))
+      this.props.dispatch({ type: 'brush', year })
   }
 }
 
-export default Axis
+export default connect((state) => {
+  return { year: state.year }
+})(Axis)

@@ -16,7 +16,7 @@ class Horizon extends Component {
 
     counts: PropTypes.array,
     extents: PropTypes.array,
-    brush: PropTypes.number
+    year: PropTypes.number
   }
 
   render() {
@@ -70,7 +70,7 @@ class Horizon extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.counts !== prevProps.counts || this.props.extents !== prevProps.extents)
       this.draw()
-    if (this.props.brush !== prevProps.brush)
+    if (this.props.year !== prevProps.year)
       this.brush()
   }
 
@@ -124,13 +124,13 @@ class Horizon extends Component {
   }
 
   brush() {
-    let year = Math.round(this.x.invert(this.props.brush))
+    let year = this.props.year
     let counts = compact(map(this.genders, ({ values }) => {
       let count = values[sortedIndexBy(values, { year }, 'year')]
       return count && count.year === year && count
     }))
     counts = this.counts
-        .attr('transform', `translate(${this.props.brush - 10} ${this.height - 10})`)
+        .attr('transform', `translate(${this.x(this.props.year) - 10} ${this.height - 10})`)
       .selectAll('text').data(sortBy(counts, d => -d.count))
     counts.enter()
       .append('text')

@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { findDOMNode } from 'react-dom'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
@@ -13,16 +12,12 @@ class App extends Component {
     name: PropTypes.string,
     names: PropTypes.array,
     extents: PropTypes.array,
-    brush: PropTypes.number,
 
     dispatch: PropTypes.func
   }
 
-  offsetLeft = 0
-
   render() {
     let cx = classnames(css.className, 'container-fluid')
-    let style = { left: this.props.brush + this.offsetLeft }
     return (
       <div className={cx} onMouseMove={this.brush}>
         <h5>
@@ -39,18 +34,13 @@ class App extends Component {
             placeholder="Add name"
             autoFocus />
         </form>
-        <Axis ref="axis" extents={this.props.extents} brush={this.props.brush} />
+        <Axis ref="axis" extents={this.props.extents} />
         {this.props.names.map((name) => {
           return <Name {...name} extents={this.props.extents} key={name.name} />
         })}
-        <div className="brush" style={style}></div>
         <Location />
       </div>
     )
-  }
-
-  componentDidMount() {
-    this.offsetLeft = findDOMNode(this.refs.axis).getBoundingClientRect().left
   }
 
   setName = (e) => {
@@ -61,17 +51,12 @@ class App extends Component {
     e.preventDefault()
     this.props.dispatch({ type: 'add', name: this.props.name })
   }
-
-  brush = (e) => {
-    this.props.dispatch({ type: 'brush', brush: e.pageX - this.offsetLeft })
-  }
 }
 
 export default connect((state) => {
   return {
     name: state.newName,
     names: state.names,
-    extents: state.extents,
-    brush: state.brush
+    extents: state.extents
   }
 })(App)

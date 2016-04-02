@@ -38,7 +38,6 @@ State
 
 TODO
 ----
-- hover to show values
 - sort states by total descending
 - state map
 - uniform y scale (by color?)

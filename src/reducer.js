@@ -5,7 +5,7 @@ const initialState = {
   names: [],
 
   extents: [],
-  brush: 0
+  year: 0
 }
 
 let reducer = (state = initialState, action) => {
@@ -52,6 +52,7 @@ let reducer = (state = initialState, action) => {
       min([state.extents[0], minBy(action.counts.null, 'year').year]),
       max([state.extents[0], maxBy(action.counts.null, 'year').year])
     ]
+    let year = state.year || extents[1]
     let names = map(state.names, (name) => {
       if (name.name === action.name)
         return { ...name, counts: action.counts }
@@ -59,11 +60,14 @@ let reducer = (state = initialState, action) => {
         return name
     })
 
-    return { ...state, extents, names }
+    return { ...state, names, extents, year }
   }
 
   case 'brush':
-    return { ...state, brush: action.brush }
+    if (state.year !== action.year)
+      return { ...state, year: action.year }
+    else
+      return state
 
   default:
     return state
