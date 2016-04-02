@@ -6,6 +6,10 @@
     overflow: visible;
   }
 
+  text.count {
+    text-anchor: end;
+  }
+
   .axis {
     shape-rendering: crispEdges;
 

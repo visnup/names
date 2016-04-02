@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import d3 from 'd3'
-import { uniqueId } from 'lodash'
+import { map, sortedIndexBy, transform, uniqueId } from 'lodash'
 
 import css from './horizon.css'
 import margin from './margin'
 
 const bands = 3
+const format = d3.format(',')
 
 class Horizon extends Component {
   static propTypes = {
@@ -14,7 +15,8 @@ class Horizon extends Component {
     children: PropTypes.object,
 
     counts: PropTypes.array,
-    extents: PropTypes.array
+    extents: PropTypes.array,
+    brush: PropTypes.number
   }
 
   render() {
@@ -56,32 +58,39 @@ class Horizon extends Component {
       .append('g')
         .attr('clip-path', `url(#${id})`)
 
+    this.x = d3.scale.linear()
+      .range([0, this.width])
+
     this.draw()
+
+    this.count = chart.append('text')
+        .classed('count', true)
+        .attr('y', this.height - 10)
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.counts !== prevProps.counts || this.props.extents !== prevProps.extents)
       this.draw()
+    if (this.props.brush !== prevProps.brush)
+      this.brush()
   }
 
   draw() {
     if (!this.props.counts || !this.props.extents.length) return
 
-    let x = d3.scale.linear()
-      .domain(this.props.extents)
-      .range([0, this.width])
+    this.x.domain(this.props.extents)
 
     let y = d3.scale.linear()
       .domain([0, d3.max(this.props.counts, d => d.count)])
       .range([this.height * bands, 0])
 
-    let genders = d3.nest()
+    this.genders = d3.nest()
       .key(d => d.gender)
       .entries(this.props.counts)
 
     let area = d3.svg.area()
       .defined(d => d.count)
-      .x(d => x(d.year))
+      .x(d => this.x(d.year))
       .y0(this.height * bands)
       .y1(d => y(d.count))
 
@@ -94,7 +103,7 @@ class Horizon extends Component {
         .attr('transform', d => `translate(0, ${-this.height * d})`)
 
     // Draw a copy of the chart in each band.
-    let genderGroups = band.selectAll('g.gender').data(genders)
+    let genderGroups = band.selectAll('g.gender').data(this.genders)
     genderGroups
       .enter()
       .append('g')
@@ -113,6 +122,18 @@ class Horizon extends Component {
           }
           return area(counts)
         })
+  }
+
+  brush() {
+    let year = Math.round(this.x.invert(this.props.brush))
+    let counts = transform(this.genders, (counts, { values }) => {
+      let count = values[sortedIndexBy(values, { year }, 'year')]
+      if (count && count.year === year)
+        counts[count.gender] = count.count
+    }, {})
+    this.count
+        .attr('x', this.props.brush - 10)
+        .text(map(counts, format).join(' '))
   }
 }
 

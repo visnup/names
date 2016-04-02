@@ -6,7 +6,8 @@ import margin from './margin'
 
 class Axis extends Component {
   static propTypes = {
-    extents: PropTypes.array
+    extents: PropTypes.array,
+    brush: PropTypes.number
   }
 
   render() {
@@ -19,25 +20,42 @@ class Axis extends Component {
       .attr('width', width)
       .attr('height', height)
 
-    this.width = width - margin.left - margin.right
+    this.x = d3.scale.linear()
+      .range([0, width - margin.left - margin.right])
 
     this.xAxisGroup = svg.append('g')
       .classed('x axis', true)
       .attr('transform', `translate(${margin.left}, ${height-0.5})`)
 
-    // TODO don't call this from here
-    this.componentDidUpdate()
+    this.draw()
+
+    this.year = svg.append('text')
+        .classed('count', true)
+        .attr('y', height - 10)
   }
 
-  componentDidUpdate() {
-    let x = d3.scale.linear()
-      .domain(this.props.extents)
-      .range([0, this.width])
+  componentDidUpdate(prevProps) {
+    if (this.props.extents !== prevProps.extents)
+      this.draw()
+
+    if (this.props.brush !== prevProps.brush)
+      this.brush()
+  }
+
+  draw() {
+    this.x.domain(this.props.extents)
     let xAxis = d3.svg.axis()
       .tickFormat(d => d)
       .orient('top')
-      .scale(x)
+      .scale(this.x)
     this.xAxisGroup.call(xAxis)
+  }
+
+  brush() {
+    let year = Math.round(this.x.invert(this.props.brush))
+    this.year
+        .attr('x', this.props.brush - 10)
+        .text(year)
   }
 }
 

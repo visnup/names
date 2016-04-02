@@ -25,7 +25,7 @@ function start(id) {
     }
   }))
 
-  app.use(require('morgan')('short'))
+  app.use(require('morgan')('dev'))
 
   app.use(require('./routes/names'))
 

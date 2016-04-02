@@ -14,4 +14,13 @@
     box-sizing: border-box;
     margin-bottom: 1em;
   }
+
+  .brush {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: hsla(0, 0%, 0%, .8);
+    pointer-events: none;
+  }
 }

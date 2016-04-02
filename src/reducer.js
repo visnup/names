@@ -4,7 +4,8 @@ const initialState = {
   newName: null,
   names: [],
 
-  extents: []
+  extents: [],
+  brush: 0
 }
 
 let reducer = (state = initialState, action) => {
@@ -56,6 +57,9 @@ let reducer = (state = initialState, action) => {
 
     return { ...state, extents, names }
   }
+
+  case 'brush':
+    return { ...state, brush: action.brush }
 
   default:
     return state

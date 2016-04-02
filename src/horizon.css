@@ -10,6 +10,12 @@
     bottom: 0;
   }
 
+  text.count {
+    text-anchor: end;
+    font-size: x-small;
+  }
+  &.lg text.count { font-size: medium; }
+
   g.gender {
     &.F path {
       fill: hsla(30, 80%, 80%, .333);

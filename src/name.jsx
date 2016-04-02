@@ -12,6 +12,8 @@ class Name extends Component {
     counts: PropTypes.object,
 
     extents: PropTypes.array,
+    brush: PropTypes.number,
+
     dispatch: PropTypes.func
   }
 
@@ -19,9 +21,11 @@ class Name extends Component {
     return (
       <div {...css}>
         <div onClick={this.expand}>
-          <Horizon className="lg"
+          <Horizon
+            className="lg"
             counts={this.props.counts && this.props.counts.null}
-            extents={this.props.extents}>
+            extents={this.props.extents}
+            brush={this.props.brush}>
             <div className="row">
               <div className="col-xs-10">
                 <h3>
@@ -45,7 +49,8 @@ class Name extends Component {
               <div key={state}>
                 <Horizon
                   counts={this.props.counts[state]}
-                  extents={this.props.extents}>
+                  extents={this.props.extents}
+                  brush={this.props.brush}>
                   <h6>{state}</h6>
                 </Horizon>
               </div>
@@ -83,4 +88,6 @@ class Name extends Component {
   }
 }
 
-export default connect()(Name)
+export default connect((state) => {
+  return { brush: state.brush }
+})(Name)
