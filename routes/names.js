@@ -14,6 +14,7 @@ router.get('/names/:name', (req, res) => {
   req.on('close', sql.end.bind(sql))
 
   res.type('json')
+  res.set('Cache-Control', 'public, max-age=60'); // 1m
   sql.pipe(JSONStream.stringify()).pipe(res)
 })
 
