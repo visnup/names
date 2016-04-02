@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { forEach, map } from 'lodash'
 
@@ -9,21 +9,21 @@ class Location extends Component {
   }
 
   render() {
-    return <div></div>
+    return null
   }
 
   componentDidMount() {
-    forEach(location.hash.substring(1).split('&').reverse(), (pair) => {
-      let [ name, expanded ] = pair.split('=')
+    forEach(location.hash.substring(1).split(',').reverse(), (pair) => {
+      let [ name, expanded ] = pair.split('~')
       if (name)
-        this.props.dispatch({ type: 'add', expanded: expanded == 1, name })
+        this.props.dispatch({ type: 'add', expanded: expanded == '', name })
     })
   }
 
   componentDidUpdate() {
     location.hash = map(this.props.names, (name) => {
-      return `${name.name}=${name.expanded ? 1 : 0}`
-    }).join('&')
+      return name.expanded ? `${name.name}~`: name.name
+    }).join(',')
   }
 }
 
