@@ -33,10 +33,10 @@ module.exports = {
       { test: /\.jsx?$/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react', 'stage-1']
-        },
-        env: {
-          development: { presets: ['react-hmre'] }
+          presets: ['es2015', 'react', 'stage-1'],
+          env: {
+            development: { presets: ['react-hmre'] }
+          }
         },
         exclude: /node_modules/
       }
