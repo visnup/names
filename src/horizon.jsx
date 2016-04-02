@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import d3 from 'd3'
-import { map, sortedIndexBy, transform, uniqueId } from 'lodash'
+import { compact, map, sortBy, sortedIndexBy, uniqueId } from 'lodash'
 
 import css from './horizon.css'
 import margin from './margin'
@@ -63,9 +63,8 @@ class Horizon extends Component {
 
     this.draw()
 
-    this.count = chart.append('text')
+    this.counts = chart.append('g')
         .classed('count', true)
-        .attr('y', this.height - 10)
   }
 
   componentDidUpdate(prevProps) {
@@ -126,14 +125,21 @@ class Horizon extends Component {
 
   brush() {
     let year = Math.round(this.x.invert(this.props.brush))
-    let counts = transform(this.genders, (counts, { values }) => {
+    let counts = compact(map(this.genders, ({ values }) => {
       let count = values[sortedIndexBy(values, { year }, 'year')]
-      if (count && count.year === year)
-        counts[count.gender] = count.count
-    }, {})
-    this.count
-        .attr('x', this.props.brush - 10)
-        .text(map(counts, format).join(' '))
+      return count && count.year === year && count
+    }))
+    counts = this.counts
+        .attr('transform', `translate(${this.props.brush - 10} ${this.height - 10})`)
+      .selectAll('text').data(sortBy(counts, d => -d.count))
+    counts.enter()
+      .append('text')
+    counts
+        .text(d => format(d.count))
+        .attr('class', d => d.gender)
+        .attr('dx', (d, i) => i * -50)
+    counts.exit()
+      .text('')
   }
 }
 

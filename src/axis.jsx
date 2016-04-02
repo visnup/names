@@ -31,7 +31,7 @@ class Axis extends Component {
 
     this.year = svg.append('text')
         .classed('count', true)
-        .attr('y', height - 10)
+        .attr('y', height - 9)
   }
 
   componentDidUpdate(prevProps) {

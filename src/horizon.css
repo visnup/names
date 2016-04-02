@@ -10,19 +10,17 @@
     bottom: 0;
   }
 
-  text.count {
+  g.count text {
     text-anchor: end;
     font-size: x-small;
+
+    &.F { fill: hsla(30, 80%, 60%, .9) }
+    &.M { fill: hsla(240, 80%, 60%, .9) }
   }
-  &.lg text.count { font-size: medium; }
+  &.lg g.count text { font-size: medium; }
 
   g.gender {
-    &.F path {
-      fill: hsla(30, 80%, 80%, .333);
-    }
-
-    &.M path {
-      fill: hsla(240, 80%, 80%, .333);
-    }
+    &.F path { fill: hsla(30, 80%, 80%, .333) }
+    &.M path { fill: hsla(240, 80%, 80%, .333) }
   }
 }
