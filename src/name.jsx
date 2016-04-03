@@ -18,14 +18,14 @@ class Name extends Component {
   }
 
   render() {
+    let counts = this.props.expanded ? omit(this.props.counts, 'null') : []
     return (
       <div {...css}>
         <div onClick={this.expand}>
-          <Horizon
-            className="lg"
-            counts={this.props.counts && this.props.counts.null}
-            extents={this.props.extents}
-            year={this.props.year}>
+          <Horizon className="lg"
+                   counts={this.props.counts && this.props.counts.null}
+                   extents={this.props.extents}
+                   year={this.props.year}>
             <h3>
               <i className="material-icons" onClick={this.remove}>
                 delete
@@ -38,20 +38,17 @@ class Name extends Component {
             </h3>
           </Horizon>
         </div>
-        {this.props.expanded &&
-          map(omit(this.props.counts, 'null'), (counts, state) => {
-            return (
-              <div key={state}>
-                <Horizon
-                  counts={this.props.counts[state]}
-                  extents={this.props.extents}
-                  year={this.props.year}>
-                  <h6>{state}</h6>
-                </Horizon>
-              </div>
-            )
-          })
-        }
+        {map(counts, (counts, state) => {
+          return (
+            <div key={state}>
+              <Horizon counts={this.props.counts[state]}
+                       extents={this.props.extents}
+                       year={this.props.year}>
+                <h6>{state}</h6>
+              </Horizon>
+            </div>
+          )
+        })}
       </div>
     )
   }
@@ -78,6 +75,7 @@ class Name extends Component {
     e.stopPropagation()
     this.props.dispatch({ type: 'remove', name: this.props.name })
   }
+
   expand = () => {
     this.props.dispatch({ type: 'expand', name: this.props.name })
   }
