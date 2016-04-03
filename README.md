@@ -41,6 +41,7 @@ TODO
 - sort states by total descending
 - state map
 - uniform y scale (by color?)
+- bar instead of area
 - use query param and push state over hash
   - link will normalize to the same page and not change data
   - ?bob&joe=expanded&hillary

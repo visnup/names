@@ -79,7 +79,7 @@ class Horizon extends Component {
 
     this.x.domain(this.props.extents)
 
-    let y = d3.scale.sqrt()
+    let y = d3.scale.linear()
       .domain([0, d3.max(this.props.counts, d => d.count)])
       .range([this.height * bands, 0])
 
