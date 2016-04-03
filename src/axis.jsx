@@ -37,7 +37,7 @@ class Axis extends Component {
       .classed('x axis', true)
       .attr('transform', `translate(${margin.left}, ${height-0.5})`)
 
-    this.label = svg.append('text')
+    this.count = svg.append('text')
         .classed('count', true)
         .attr('y', height - 9)
 
@@ -73,7 +73,7 @@ class Axis extends Component {
   }
 
   brush() {
-    this.label
+    this.count
         .attr('x', this.x(this.props.year) - 10)
         .text(this.props.year)
 
