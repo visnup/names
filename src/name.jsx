@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { groupBy, isEmpty, map, omit } from 'lodash'
+import states from 'datasets-us-states-abbr-names'
 
 import css from './name.css'
 import Horizon from './horizon'
@@ -44,7 +45,7 @@ class Name extends Component {
               <Horizon counts={this.props.counts[state]}
                        extents={this.props.extents}
                        year={this.props.year}>
-                <h6>{state}</h6>
+                <h6>{states[state] || state}</h6>
               </Horizon>
             </div>
           )

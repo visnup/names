@@ -29,6 +29,7 @@ module.exports = {
     loaders: [
       { test: /\.csv$/, loader: 'dsv' },
       { test: /\.css$/, loaders: ['style', 'css', 'postcss'] },
+      { test: /\.json$/, loader: 'json' },
 
       { test: /\.jsx?$/,
         loader: 'babel',

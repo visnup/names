@@ -6,6 +6,7 @@ import css from './app.css'
 import Location from './location'
 import Axis from './axis'
 import Name from './name'
+import Map from './map'
 
 class App extends Component {
   static propTypes = {
@@ -26,18 +27,25 @@ class App extends Component {
 
           Code on <a href="https://github.com/visnup/names">GitHub</a>.
         </h5>
-        <form onSubmit={this.addName}>
-          <input
-            type="text"
-            value={this.props.name}
-            onChange={this.setName}
-            placeholder="Add name"
-            autoFocus />
-        </form>
-        <Axis ref="axis" extents={this.props.extents} />
-        {this.props.names.map((name) => {
-          return <Name {...name} extents={this.props.extents} key={name.name} />
-        })}
+        <div className="row">
+          <div className="col-xs-8">
+            <form onSubmit={this.addName}>
+              <input
+                type="text"
+                value={this.props.name}
+                onChange={this.setName}
+                placeholder="Add name"
+                autoFocus />
+            </form>
+            <Axis ref="axis" extents={this.props.extents} />
+            {this.props.names.map((name) => {
+              return <Name {...name} extents={this.props.extents} key={name.name} />
+            })}
+          </div>
+          <div className="col-xs-4">
+            <Map {...this.props.names[0]}/>
+          </div>
+        </div>
         <Location />
       </div>
     )

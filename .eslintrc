@@ -19,6 +19,18 @@
       "error",
       "unix"
     ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_"
+      }
+    ],
     "quotes": [
       "error",
       "single",
@@ -27,12 +39,6 @@
     "semi": [
       "error",
       "never"
-    ],
-    "no-unused-vars": [
-      "error",
-      {
-        "varsIgnorePattern": "^_"
-      }
     ]
   }
 }

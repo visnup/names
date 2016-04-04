@@ -42,24 +42,20 @@ class Horizon extends Component {
         .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
     // We'll use a defs to store the area path and the clip path.
-    let defs = chart.selectAll('defs').data([null])
-
     // The clip path is a simple rect.
     let id = uniqueId('d3_horizon_clip_')
-    defs.enter().append('defs').append('clipPath')
+    chart.append('defs').append('clipPath')
         .attr('id', id)
       .append('rect')
         .attr('width', this.width)
         .attr('height', this.height)
 
     // We'll use a container to clip all horizon layers at once.
-    this.chart = chart.selectAll('g').data([null])
-      .enter()
-      .append('g')
+    this.chart = chart.append('g')
         .attr('clip-path', `url(#${id})`)
 
     this.x = d3.scale.linear()
-      .range([0, this.width])
+        .range([0, this.width])
 
     this.draw()
 
@@ -77,25 +73,25 @@ class Horizon extends Component {
   draw() {
     if (!this.props.counts || !this.props.extents.length) return
 
-    this.x.domain(this.props.extents)
+    this.x
+        .domain(this.props.extents)
 
     let y = d3.scale.linear()
-      .domain([0, d3.max(this.props.counts, d => d.count)])
-      .range([this.height * bands, 0])
+        .domain([0, d3.max(this.props.counts, d => d.count)])
+        .range([this.height * bands, 0])
 
     this.genders = d3.nest()
-      .key(d => d.gender)
-      .entries(this.props.counts)
+        .key(d => d.gender)
+        .entries(this.props.counts)
 
     let area = d3.svg.area()
-      .defined(d => d.count)
-      .x(d => this.x(d.year))
-      .y0(this.height * bands)
-      .y1(d => y(d.count))
+        .defined(d => d.count)
+        .x(d => this.x(d.year))
+        .y0(this.height * bands)
+        .y1(d => y(d.count))
 
     // Instantiate each band with different transforms.
-    let band = this.chart.selectAll('g.band')
-      .data(d3.range(bands))
+    let band = this.chart.selectAll('g.band').data(d3.range(bands))
     band.enter()
       .append('g')
         .classed('band', true)
@@ -103,8 +99,7 @@ class Horizon extends Component {
 
     // Draw a copy of the chart in each band.
     let genderGroups = band.selectAll('g.gender').data(this.genders)
-    genderGroups
-      .enter()
+    genderGroups.enter()
       .append('g')
         .attr('class', d => `gender ${d.key}`)
       .append('path')
@@ -139,7 +134,7 @@ class Horizon extends Component {
         .attr('class', d => d.gender)
         .attr('dx', (d, i) => i * -50)
     counts.exit()
-      .text('')
+        .text('')
   }
 }
 

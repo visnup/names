@@ -25,17 +25,17 @@ class Axis extends Component {
   componentDidMount() {
     let { left, right, width, height } = this.refs.container.getBoundingClientRect()
     let svg = d3.select(this.refs.container).append('svg')
-      .attr('width', width)
-      .attr('height', height)
+        .attr('width', width)
+        .attr('height', height)
 
     this.x = d3.scale.linear()
-      .range([0, width - margin.left - margin.right])
+        .range([0, width - margin.left - margin.right])
     this.pageX = d3.scale.linear()
-      .range([ left - margin.left, right - margin.left - margin.right ])
+        .range([ left - margin.left, right - margin.left - margin.right ])
 
     this.xAxisGroup = svg.append('g')
-      .classed('x axis', true)
-      .attr('transform', `translate(${margin.left}, ${height-0.5})`)
+        .classed('x axis', true)
+        .attr('transform', `translate(${margin.left}, ${height-0.5})`)
 
     this.count = svg.append('text')
         .classed('count', true)
@@ -66,9 +66,9 @@ class Axis extends Component {
 
   draw() {
     let xAxis = d3.svg.axis()
-      .tickFormat(d => d)
-      .orient('top')
-      .scale(this.x)
+        .tickFormat(d => d)
+        .orient('top')
+        .scale(this.x)
     this.xAxisGroup.call(xAxis)
   }
 

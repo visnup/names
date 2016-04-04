@@ -9,7 +9,10 @@ import App from './app'
 
 const store = createStore(reducer, applyMiddleware(
   require('redux-thunk').default,
-  require('redux-logger')({ predicate: (_, action) => action.type !== 'brush' })
+  require('redux-logger')({
+    collapsed: true,
+    predicate: (_, action) => action.type !== 'brush'
+  })
 ))
 
 render(
