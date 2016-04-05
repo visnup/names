@@ -37,6 +37,7 @@ let reducer = (state = initialState, action) => {
     // TODO don't need to recompute all of the extents
     let extents = { year: [], count: [] }
     names.forEach(({ counts }) => {
+      if (!counts) return
       extents = {
         year: [
           min([extents.year[0], minBy(counts.null, 'year').year]),
