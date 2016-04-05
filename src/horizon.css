@@ -20,7 +20,7 @@
   &.lg g.count text { font-size: medium; }
 
   g.gender {
-    &.F path { fill: hsla(30, 80%, 80%, .333) }
-    &.M path { fill: hsla(240, 80%, 80%, .333) }
+    &.F path { fill: hsla(20, 80%, 60%, .25) }
+    &.M path { fill: hsla(230, 80%, 60%, .25) }
   }
 }

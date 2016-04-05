@@ -8,7 +8,7 @@ import margin from './margin'
 
 class Axis extends Component {
   static propTypes = {
-    extents: PropTypes.array,
+    extents: PropTypes.object,
     year: PropTypes.number,
 
     dispatch: PropTypes.func
@@ -50,8 +50,8 @@ class Axis extends Component {
 
   componentWillUpdate(props) {
     if (this.props.extents !== props.extents) {
-      this.x.domain(props.extents)
-      this.pageX.domain(props.extents)
+      this.x.domain(props.extents.year)
+      this.pageX.domain(props.extents.year)
     }
   }
 
@@ -83,7 +83,7 @@ class Axis extends Component {
 
   onMouseMove = (e) => {
     let year = Math.floor(this.pageX.invert(e.pageX))
-    if (this.props.year !== year && inRange(year, this.props.extents[0], this.props.extents[1]+1))
+    if (this.props.year !== year && inRange(year, this.props.extents.year[0], this.props.extents.year[1]+1))
       this.props.dispatch({ type: 'brush', year })
   }
 }

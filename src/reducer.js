@@ -4,7 +4,10 @@ const initialState = {
   newName: null,
   names: [],
 
-  extents: [],
+  extents: {
+    year: [],
+    count: []
+  },
   year: 0
 }
 
@@ -30,9 +33,25 @@ let reducer = (state = initialState, action) => {
       }
   }
   case 'remove': {
+    let names = reject(state.names, { name: action.name })
+    // TODO don't need to recompute all of the extents
+    let extents = { year: [], count: [] }
+    names.forEach(({ counts }) => {
+      extents = {
+        year: [
+          min([extents.year[0], minBy(counts.null, 'year').year]),
+          max([extents.year[1], maxBy(counts.null, 'year').year])
+        ],
+        count: [
+          0,
+          max([extents.count[1], maxBy(counts.null, 'count').count])
+        ]
+      }
+    })
     return {
       ...state,
-      names: reject(state.names, { name: action.name })
+      extents,
+      names
     }
   }
   case 'expand': {
@@ -48,11 +67,18 @@ let reducer = (state = initialState, action) => {
   }
 
   case 'countsFetch': {
-    let extents = [
-      min([state.extents[0], minBy(action.counts.null, 'year').year]),
-      max([state.extents[0], maxBy(action.counts.null, 'year').year])
-    ]
-    let year = state.year || extents[1]
+    // TODO don't need to recompute all of the extents
+    let extents = {
+      year: [
+        min([state.extents.year[0], minBy(action.counts.null, 'year').year]),
+        max([state.extents.year[1], maxBy(action.counts.null, 'year').year])
+      ],
+      count: [
+        0,
+        max([state.extents.count[1], maxBy(action.counts.null, 'count').count])
+      ]
+    }
+    let year = state.year || extents.year[1]
     let names = map(state.names, (name) => {
       if (name.name === action.name)
         return { ...name, counts: action.counts }

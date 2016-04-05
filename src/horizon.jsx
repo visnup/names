@@ -6,7 +6,7 @@ import { compact, map, sortBy, sortedIndexBy, uniqueId } from 'lodash'
 import css from './horizon.css'
 import margin from './margin'
 
-const bands = 3
+const bands = 4
 const format = d3.format(',')
 
 class Horizon extends Component {
@@ -15,7 +15,7 @@ class Horizon extends Component {
     children: PropTypes.object,
 
     counts: PropTypes.array,
-    extents: PropTypes.array,
+    extents: PropTypes.object,
     year: PropTypes.number
   }
 
@@ -75,12 +75,12 @@ class Horizon extends Component {
   }
 
   draw() {
-    if (!this.props.counts || !this.props.extents.length) return
+    if (!this.props.counts || !this.props.extents.year.length) return
 
-    this.x.domain(this.props.extents)
+    this.x.domain(this.props.extents.year)
 
-    let y = d3.scale.linear()
-      .domain([0, d3.max(this.props.counts, d => d.count)])
+    let y = d3.scale.sqrt()
+      .domain([0, this.props.extents.count[1]])
       .range([this.height * bands, 0])
 
     this.genders = d3.nest()
@@ -112,7 +112,7 @@ class Horizon extends Component {
         .attr('d', (d) => {
           // fill in undefined gaps
           let counts = [], i = 0
-          for (let y = this.props.extents[0]; y <= this.props.extents[1]; y++) {
+          for (let y = this.props.extents.year[0]; y <= this.props.extents.year[1]; y++) {
             if (d.values[i] && d.values[i].year == y) {
               counts.push(d.values[i++])
             } else {

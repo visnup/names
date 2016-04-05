@@ -11,7 +11,7 @@ class Name extends Component {
     expanded: PropTypes.bool,
     counts: PropTypes.object,
 
-    extents: PropTypes.array,
+    extents: PropTypes.object,
     year: PropTypes.number,
 
     dispatch: PropTypes.func

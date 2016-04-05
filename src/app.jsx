@@ -11,7 +11,7 @@ class App extends Component {
   static propTypes = {
     name: PropTypes.string,
     names: PropTypes.array,
-    extents: PropTypes.array,
+    extents: PropTypes.object,
 
     dispatch: PropTypes.func
   }
