@@ -37,17 +37,17 @@ let reducer = (state = initialState, action) => {
     // TODO don't need to recompute all of the extents
     let extents = { year: [], count: [] }
     names.forEach(({ counts }) => {
-      if (!counts) return
-      extents = {
-        year: [
-          min([extents.year[0], minBy(counts.null, 'year').year]),
-          max([extents.year[1], maxBy(counts.null, 'year').year])
-        ],
-        count: [
-          0,
-          max([extents.count[1], maxBy(counts.null, 'count').count])
-        ]
-      }
+      if (counts && counts.null)
+        extents = {
+          year: [
+            min([extents.year[0], minBy(counts.null, 'year').year]),
+            max([extents.year[1], maxBy(counts.null, 'year').year])
+          ],
+          count: [
+            0,
+            max([extents.count[1], maxBy(counts.null, 'count').count])
+          ]
+        }
     })
     return {
       ...state,
@@ -69,16 +69,18 @@ let reducer = (state = initialState, action) => {
 
   case 'countsFetch': {
     // TODO don't need to recompute all of the extents
-    let extents = {
-      year: [
-        min([state.extents.year[0], minBy(action.counts.null, 'year').year]),
-        max([state.extents.year[1], maxBy(action.counts.null, 'year').year])
-      ],
-      count: [
-        0,
-        max([state.extents.count[1], maxBy(action.counts.null, 'count').count])
-      ]
-    }
+    let extents = state.extents
+    if (action.counts && action.counts.null)
+      extents = {
+        year: [
+          min([extents.year[0], minBy(action.counts.null, 'year').year]),
+          max([extents.year[1], maxBy(action.counts.null, 'year').year])
+        ],
+        count: [
+          0,
+          max([extents.count[1], maxBy(action.counts.null, 'count').count])
+        ]
+      }
     let year = state.year || extents.year[1]
     let names = map(state.names, (name) => {
       if (name.name === action.name)
