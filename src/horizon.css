@@ -14,8 +14,8 @@
     text-anchor: end;
     font-size: x-small;
 
-    &.F { fill: hsla(30, 80%, 60%, .9) }
-    &.M { fill: hsla(240, 80%, 60%, .9) }
+    &.F { fill: hsla(30, 100%, 40%, .9) }
+    &.M { fill: hsla(240, 100%, 40%, .9) }
   }
   &.lg g.count text { font-size: medium; }
 
