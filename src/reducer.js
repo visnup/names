@@ -49,11 +49,8 @@ let reducer = (state = initialState, action) => {
           ]
         }
     })
-    return {
-      ...state,
-      extents,
-      names
-    }
+
+    return { ...state, extents, names }
   }
   case 'expand': {
     return {
