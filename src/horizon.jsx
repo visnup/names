@@ -108,19 +108,14 @@ class Horizon extends Component {
       .append('g')
         .attr('class', d => `gender ${d.key}`)
       .append('path')
-    genderGroups.selectAll('path')
-        .attr('d', (d) => {
-          // fill in undefined gaps
-          let counts = [], i = 0
-          for (let y = this.props.extents.year[0]; y <= this.props.extents.year[1]; y++) {
-            if (d.values[i] && d.values[i].year == y) {
-              counts.push(d.values[i++])
-            } else {
-              counts.push({ year: y })
-            }
-          }
-          return area(counts)
-        })
+    let bars = genderGroups.selectAll('rect').data(d => d.values)
+    bars
+      .enter().append('rect')
+        .attr('width', 5)
+    bars
+        .attr('x', d => this.x(d.year))
+        .attr('y', d => y(d.count))
+        .attr('height', d => this.height * bands - y(d.count))
   }
 
   brush() {
