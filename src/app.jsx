@@ -20,12 +20,19 @@ class App extends Component {
     let cx = classnames(css.className, 'container-fluid')
     return (
       <div className={cx} onMouseMove={this.brush}>
-        <h5>
-          First names by Birth Year (data from
-            the <a href="https://www.ssa.gov/oact/babynames/limits.html">Social Security Administration</a>).
+        <h4>First names by year of birth</h4>
+        <p>
+          Charts are <a href="https://github.com/d3/d3-plugins/tree/master/horizon">horizon-like</a>: as values reach the top of
+          the chart, they wrap around and get a darker shade. Colors denote
+          declared genders at time of birth.
 
-          Code on <a href="https://github.com/visnup/names">GitHub</a>.
-        </h5>
+          Mouse or tap around for actual counts. Expand a chart to see
+          state-by-state breakdowns.
+
+          Data is from the <a
+          href="https://www.ssa.gov/oact/babynames/limits.html">Social Security
+          Administration</a>) and code is on <a href="https://github.com/visnup/names">GitHub</a>.
+        </p>
         <form onSubmit={this.addName}>
           <input
             type="text"
