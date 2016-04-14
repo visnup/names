@@ -1,4 +1,4 @@
-import { find, map, max, maxBy, min, minBy, reject, startCase } from 'lodash'
+import { find, map, max, maxBy, min, minBy, reduce, reject, startCase } from 'lodash'
 
 const initialState = {
   newName: null,
@@ -34,21 +34,15 @@ let reducer = (state = initialState, action) => {
   }
   case 'remove': {
     let names = reject(state.names, { name: action.name })
-    // TODO don't need to recompute all of the extents
-    let extents = { year: [], count: [] }
-    names.forEach(({ counts }) => {
-      if (counts && counts.null)
-        extents = {
-          year: [
-            min([extents.year[0], minBy(counts.null, 'year').year]),
-            max([extents.year[1], maxBy(counts.null, 'year').year])
-          ],
-          count: [
-            0,
-            max([extents.count[1], maxBy(counts.null, 'count').count])
-          ]
+    let extents = reduce(names, (outer, { extents }) => {
+      if (extents)
+        return {
+          year: [ min([...outer.year, ...extents.year]), max([...outer.year, ...extents.year]) ],
+          count: [ 0, max([...outer.count, ...extents.count]) ]
         }
-    })
+      else
+        return outer
+    }, { year: [], count: [] })
 
     return { ...state, extents, names }
   }
@@ -65,26 +59,24 @@ let reducer = (state = initialState, action) => {
   }
 
   case 'countsFetch': {
-    // TODO don't need to recompute all of the extents
-    let extents = state.extents
-    if (action.counts && action.counts.null)
-      extents = {
-        year: [
-          min([extents.year[0], minBy(action.counts.null, 'year').year]),
-          max([extents.year[1], maxBy(action.counts.null, 'year').year])
-        ],
-        count: [
-          0,
-          max([extents.count[1], maxBy(action.counts.null, 'count').count])
-        ]
-      }
-    let year = state.year || extents.year[1]
+    if (!action.counts || !action.counts.null)
+      return state
+
+    action.extents = {
+      year: [ minBy(action.counts.null, 'year').year, maxBy(action.counts.null, 'year').year ],
+      count: [ 0, maxBy(action.counts.null, 'count').count ]
+    }
+    let extents = {
+      year: [ min([...state.extents.year, ...action.extents.year]), max([...state.extents.year, ...action.extents.year]) ],
+      count: [ 0, max([...state.extents.count, ...action.extents.count]) ]
+    }
     let names = map(state.names, (name) => {
       if (name.name === action.name)
-        return { ...name, counts: action.counts }
+        return { ...name, counts: action.counts, extents: action.extents }
       else
         return name
     })
+    let year = state.year || extents.year[1]
 
     return { ...state, names, extents, year }
   }
