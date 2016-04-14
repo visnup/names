@@ -26,5 +26,9 @@
       fill: none;
       stroke: black;
     }
+
+    .tick {
+      transition: fill-opacity .2s;
+    }
   }
 }

@@ -72,6 +72,7 @@ class Axis extends Component {
         .orient('top')
         .scale(this.x)
     this.xAxisGroup.call(xAxis)
+    this.ticks = this.xAxisGroup.selectAll('.tick')
 
     let { top } = this.refs.container.getBoundingClientRect()
     this.rule
@@ -85,6 +86,11 @@ class Axis extends Component {
 
     this.rule
         .style('left', this.pageX(this.props.year) + 'px')
+
+    this.ticks
+        .style('fill-opacity', (d) => {
+          return Math.abs(this.props.year - 2 - d) < 4 ? 0 : 1
+        })
   }
 
   onMouseMove = (e) => {
