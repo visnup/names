@@ -29,17 +29,19 @@ class Axis extends Component {
       .attr('height', height)
 
     this.x = d3.scale.linear()
-      .range([0, width - margin.left - margin.right])
+        .range([0, width - margin.left - margin.right])
     this.pageX = d3.scale.linear()
-      .range([ left - margin.left, right - margin.left - margin.right ])
+        .range([ left - margin.left, right - margin.left - margin.right ])
 
     this.xAxisGroup = svg.append('g')
-      .classed('x axis', true)
-      .attr('transform', `translate(${margin.left}, ${height-0.5})`)
+        .classed('x axis', true)
+        .attr('transform', `translate(${margin.left}, ${height-0.5})`)
 
     this.count = svg.append('text')
         .classed('count', true)
         .attr('y', height - 9)
+
+    this.rule = d3.select(this.refs.rule)
 
     window.addEventListener('mousemove', this.onMouseMove)
   }
@@ -66,10 +68,14 @@ class Axis extends Component {
 
   draw() {
     let xAxis = d3.svg.axis()
-      .tickFormat(d => d)
-      .orient('top')
-      .scale(this.x)
+        .tickFormat(d => d)
+        .orient('top')
+        .scale(this.x)
     this.xAxisGroup.call(xAxis)
+
+    let { top } = this.refs.container.getBoundingClientRect()
+    this.rule
+        .style('top', top + 'px')
   }
 
   brush() {
@@ -77,7 +83,7 @@ class Axis extends Component {
         .attr('x', this.x(this.props.year) - 10)
         .text(this.props.year)
 
-    d3.select(this.refs.rule)
+    this.rule
         .style('left', this.pageX(this.props.year) + 'px')
   }
 
