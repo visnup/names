@@ -39,7 +39,7 @@ class Axis extends Component {
 
     this.count = svg.append('text')
         .classed('count', true)
-        .attr('y', height - 9)
+        .attr('y', height - 9.5)
 
     this.rule = d3.select(this.refs.rule)
 
