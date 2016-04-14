@@ -87,10 +87,11 @@ class Axis extends Component {
     this.rule
         .style('left', this.pageX(this.props.year) + 'px')
 
-    this.ticks
-        .style('fill-opacity', (d) => {
-          return Math.abs(this.props.year - 2 - d) < 4 ? 0 : 1
-        })
+    if (this.ticks)
+      this.ticks
+          .style('fill-opacity', (d) => {
+            return Math.abs(this.props.year - 2 - d) < 4 ? 0 : 1
+          })
   }
 
   onMouseMove = (e) => {
