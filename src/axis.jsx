@@ -31,7 +31,7 @@ class Axis extends Component {
     this.x = d3.scale.linear()
         .range([0, width - margin.left - margin.right])
     this.pageX = d3.scale.linear()
-        .range([ left - margin.left, right - margin.left - margin.right ])
+        .range([ left - margin.left + 0.5, right - margin.left - margin.right ])
 
     this.xAxisGroup = svg.append('g')
         .classed('x axis', true)
