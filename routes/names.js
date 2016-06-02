@@ -6,10 +6,16 @@ const knex = require('../data/knex')
 const startCase = require('lodash').startCase
 
 router.get('/names/:name', (req, res) => {
+  // if name has a non-word character, treat it as all data
+  let name = req.params.name
+  name = !name || name.match(/\W/)
+    ? null
+    : startCase(name.toLowerCase())
+
   let sql = knex
     .select([ 'name', 'gender', 'state', 'year', 'count' ])
     .from('names')
-    .where('name', startCase(req.params.name.toLowerCase()))
+    .where('name', name)
     .stream()
   req.on('close', sql.end.bind(sql))
 
