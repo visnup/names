@@ -39,7 +39,9 @@ class App extends Component {
             </form>
             <Axis ref="axis" extents={this.props.extents} />
             {this.props.names.map((name) => {
-              return <Name {...name} extents={this.props.extents} key={name.name} />
+              return <Name {...name}
+                extents={this.props.extents}
+                key={name.name} />
             })}
           </div>
           <div className="col-xs-4">

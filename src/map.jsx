@@ -37,8 +37,6 @@ class Map extends Component {
       if (err) return console.error(err)
 
       this.features = topojson.feature(us, us.objects.states).features
-      console.log(this.features)
-
       this.states = svg.selectAll('path')
           .data(this.features)
       this.states

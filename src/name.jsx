@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { groupBy, isEmpty, map, omit } from 'lodash'
+import { forEach, groupBy, isEmpty, map, omit } from 'lodash'
 import states from 'datasets-us-states-abbr-names'
 
 import css from './name.css'
@@ -12,6 +12,7 @@ class Name extends Component {
     expanded: PropTypes.bool,
     counts: PropTypes.object,
 
+    totals: PropTypes.array,
     extents: PropTypes.array,
     year: PropTypes.number,
 
@@ -20,6 +21,9 @@ class Name extends Component {
 
   render() {
     let counts = this.props.expanded ? omit(this.props.counts, 'null') : []
+    forEach(counts, (count) => {
+      console.log(count)
+    })
     return (
       <div {...css}>
         <div onClick={this.expand}>
@@ -83,5 +87,5 @@ class Name extends Component {
 }
 
 export default connect((state) => {
-  return { year: state.year }
+  return { year: state.year, totals: state.totals }
 })(Name)

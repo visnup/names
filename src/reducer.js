@@ -63,6 +63,10 @@ let reducer = (state = initialState, action) => {
     return { ...state, names, extents, year }
   }
 
+  case 'totals': {
+    return { ...state, totals: action.counts }
+  }
+
   case 'brush':
     if (state.year !== action.year)
       return { ...state, year: action.year }
