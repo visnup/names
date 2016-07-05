@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import d3 from 'd3'
+import * as d3 from 'd3'
+console.log('axis', d3)
 import { inRange } from 'lodash'
 
 import css from './axis.css'
@@ -28,9 +29,9 @@ class Axis extends Component {
       .attr('width', width)
       .attr('height', height)
 
-    this.x = d3.scale.linear()
+    this.x = d3.scaleLinear()
         .range([0, width - margin.left - margin.right])
-    this.pageX = d3.scale.linear()
+    this.pageX = d3.scaleLinear()
         .range([ left - margin.left + 0.5, right - margin.left - margin.right ])
 
     this.xAxisGroup = svg.append('g')
@@ -67,10 +68,8 @@ class Axis extends Component {
   }
 
   draw() {
-    let xAxis = d3.svg.axis()
+    let xAxis = d3.axisTop(this.x)
         .tickFormat(d => d)
-        .orient('top')
-        .scale(this.x)
     this.xAxisGroup.call(xAxis)
     this.ticks = this.xAxisGroup.selectAll('.tick')
 

@@ -20,13 +20,7 @@
   }
 
   .axis {
-    shape-rendering: crispEdges;
-
-    line, path {
-      fill: none;
-      stroke: black;
-    }
-
+    font-family: 'Catamaran', sans-serif;
     .tick {
       transition: fill-opacity .2s;
     }

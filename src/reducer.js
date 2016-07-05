@@ -1,7 +1,7 @@
 import { find, map, max, maxBy, min, minBy, reduce, reject, startCase } from 'lodash'
 
 const initialState = {
-  newName: undefined,
+  newName: '',
   names: [],
 
   extents: {
@@ -24,7 +24,7 @@ let reducer = (state = initialState, action) => {
     else
       return {
         ...state,
-        newName: undefined,
+        newName: '',
         names: [
           { name: startCase(action.name.toLowerCase()),
             expanded: action.expanded },

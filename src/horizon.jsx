@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
-import d3 from 'd3'
+import * as d3 from 'd3'
+console.log('horizon', d3)
 import { compact, map, sortBy, sortedIndexBy, uniqueId } from 'lodash'
 
 import css from './horizon.css'
@@ -58,7 +59,7 @@ class Horizon extends Component {
       .append('g')
         .attr('clip-path', `url(#${id})`)
 
-    this.x = d3.scale.linear()
+    this.x = d3.scaleLinear()
       .range([0, this.width])
 
     this.draw()
@@ -79,7 +80,7 @@ class Horizon extends Component {
 
     this.x.domain(this.props.extents.year)
 
-    let y = d3.scale.sqrt()
+    let y = d3.scaleSqrt()
       .domain([0, this.props.extents.count[1]])
       .range([this.height * bands, 0])
 
@@ -87,7 +88,7 @@ class Horizon extends Component {
       .key(d => d.gender)
       .entries(this.props.counts)
 
-    let area = d3.svg.area()
+    let area = d3.area()
       .defined(d => d.count)
       .x(d => this.x(d.year))
       .y0(this.height * bands)
