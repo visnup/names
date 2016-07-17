@@ -47,3 +47,4 @@ TODO
   - ?bob&joe=expanded&hillary
 - load previous state from localStorage
 - autocomplete
+- next letter frequency
