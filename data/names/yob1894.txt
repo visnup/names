@@ -1748,7 +1748,7 @@ Lee,M,455
 Floyd,M,445
 Jack,M,441
 Herman,M,433
-Lawrence,M,431
+Lawrence,M,430
 Francis,M,423
 Michael,M,423
 Eugene,M,421
@@ -1894,9 +1894,9 @@ Perry,M,78
 Nathaniel,M,77
 Nicholas,M,77
 Alva,M,76
-Gerald,M,76
 Gus,M,76
 Nelson,M,76
+Gerald,M,75
 Noah,M,74
 Abraham,M,73
 Bill,M,73

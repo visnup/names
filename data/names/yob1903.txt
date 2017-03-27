@@ -290,9 +290,9 @@ Janet,F,119
 Corinne,F,118
 Lorene,F,116
 Dolores,F,114
-Merle,F,113
 Bess,F,112
 Harriett,F,112
+Merle,F,112
 Pearlie,F,112
 Elvira,F,110
 Lee,F,110
@@ -2299,8 +2299,8 @@ Sherman,M,70
 Merle,M,69
 Pete,M,69
 Roscoe,M,69
-Bruce,M,68
 Levi,M,68
+Bruce,M,67
 Monroe,M,67
 Ross,M,67
 Bob,M,66

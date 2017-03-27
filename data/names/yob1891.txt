@@ -1531,7 +1531,7 @@ Vola,F,5
 Wadie,F,5
 Will,F,5
 Zillah,F,5
-John,M,7681
+John,M,7680
 William,M,6763
 James,M,4516
 George,M,3931
@@ -1547,7 +1547,7 @@ Walter,M,1668
 Arthur,M,1514
 Fred,M,1362
 Albert,M,1207
-Clarence,M,1008
+Clarence,M,1007
 Roy,M,838
 Louis,M,786
 Samuel,M,753
@@ -2351,7 +2351,6 @@ Miguel,M,7
 Miller,M,7
 Miner,M,7
 Murl,M,7
-Newell,M,7
 Olen,M,7
 Olof,M,7
 Presley,M,7
@@ -2456,6 +2455,7 @@ Micheal,M,6
 Mitchel,M,6
 Murphy,M,6
 Myrtle,M,6
+Newell,M,6
 Newt,M,6
 Okey,M,6
 Olive,M,6

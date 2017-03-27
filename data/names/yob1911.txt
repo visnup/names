@@ -5,13 +5,13 @@ Dorothy,F,8869
 Ruth,F,8003
 Anna,F,6753
 Elizabeth,F,6298
-Mildred,F,6270
+Mildred,F,6271
 Marie,F,5017
 Frances,F,4967
 Alice,F,4812
 Florence,F,4424
 Lillian,F,4367
-Rose,F,4150
+Rose,F,4151
 Ethel,F,4141
 Evelyn,F,4075
 Edna,F,3957
@@ -28,7 +28,7 @@ Thelma,F,3166
 Martha,F,3019
 Josephine,F,3011
 Gertrude,F,2895
-Edith,F,2824
+Edith,F,2825
 Lucille,F,2740
 Clara,F,2691
 Esther,F,2676
@@ -60,7 +60,7 @@ Marjorie,F,1722
 Lillie,F,1690
 Willie,F,1637
 Alma,F,1611
-Ella,F,1605
+Ella,F,1604
 Anne,F,1598
 Mattie,F,1552
 Jessie,F,1550
@@ -84,7 +84,7 @@ Violet,F,1183
 Ellen,F,1162
 Jennie,F,1161
 Hattie,F,1135
-Marguerite,F,1112
+Marguerite,F,1113
 Fannie,F,1100
 Mamie,F,1095
 Velma,F,1045
@@ -135,8 +135,8 @@ Geraldine,F,627
 Lottie,F,620
 Nettie,F,617
 Irma,F,615
+Erma,F,595
 Katie,F,595
-Erma,F,594
 Goldie,F,593
 Naomi,F,585
 Lydia,F,568
@@ -198,7 +198,7 @@ Leola,F,363
 Shirley,F,362
 Angelina,F,359
 Cleo,F,358
-Alta,F,356
+Alta,F,357
 Elva,F,354
 Muriel,F,353
 Veronica,F,353
@@ -2937,7 +2937,7 @@ Oscar,M,636
 Philip,M,612
 Milton,M,608
 Ray,M,602
-Jesse,M,597
+Jesse,M,596
 Melvin,M,594
 Lloyd,M,590
 Martin,M,567

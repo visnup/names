@@ -59,7 +59,7 @@ Mamie,F,436
 Blanche,F,427
 Stella,F,414
 Ellen,F,411
-Nancy,F,411
+Nancy,F,410
 Effie,F,406
 Sallie,F,404
 Nettie,F,403
@@ -941,7 +941,7 @@ Verona,F,5
 Vertie,F,5
 Wilma,F,5
 John,M,9655
-William,M,9532
+William,M,9531
 James,M,5927
 Charles,M,5348
 George,M,5126

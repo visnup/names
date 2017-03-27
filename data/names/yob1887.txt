@@ -47,7 +47,7 @@ Agnes,F,896
 Lula,F,891
 Dora,F,842
 Elsie,F,832
-Josephine,F,816
+Josephine,F,815
 Lucy,F,811
 Fannie,F,798
 Katherine,F,794
@@ -1792,6 +1792,7 @@ Thurman,M,14
 Waldo,M,14
 Zack,M,14
 Adrian,M,13
+Anna,M,13
 Annie,M,13
 Basil,M,13
 Benjaman,M,13
@@ -1820,7 +1821,6 @@ Wilford,M,13
 Williams,M,13
 Addison,M,12
 Albin,M,12
-Anna,M,12
 Baxter,M,12
 Billie,M,12
 Blaine,M,12

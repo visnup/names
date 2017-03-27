@@ -217,8 +217,8 @@ Zelma,F,189
 Margie,F,187
 Gussie,F,185
 Millie,F,185
-Bonnie,F,183
 Faye,F,183
+Bonnie,F,182
 Cecile,F,181
 Fay,F,181
 Carolyn,F,179
@@ -694,7 +694,6 @@ Eldora,F,24
 Eulalia,F,24
 Euna,F,24
 Freeda,F,24
-Gloria,F,24
 Goldia,F,24
 Hanna,F,24
 Hassie,F,24
@@ -721,6 +720,7 @@ Elvina,F,23
 Exie,F,23
 Felicia,F,23
 Garnett,F,23
+Gloria,F,23
 Hildred,F,23
 Icy,F,23
 Jossie,F,23

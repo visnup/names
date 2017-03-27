@@ -1998,7 +1998,7 @@ Harold,M,963
 Raymond,M,929
 Carl,M,919
 Earl,M,883
-Richard,M,873
+Richard,M,872
 Louis,M,862
 Ernest,M,839
 Joe,M,827
@@ -2021,7 +2021,7 @@ Daniel,M,523
 Lee,M,498
 Jesse,M,476
 Will,M,475
-Eugene,M,474
+Eugene,M,473
 Herman,M,467
 Floyd,M,434
 Michael,M,434

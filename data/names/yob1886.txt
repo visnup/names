@@ -1,4 +1,4 @@
-Mary,F,9890
+Mary,F,9889
 Anna,F,4283
 Emma,F,2764
 Elizabeth,F,2680
@@ -1366,7 +1366,7 @@ Alexander,M,206
 August,M,203
 Ira,M,198
 Eddie,M,197
-Philip,M,186
+Philip,M,187
 Marion,M,182
 Jessie,M,181
 Stephen,M,181

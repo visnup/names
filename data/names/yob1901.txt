@@ -98,7 +98,7 @@ Effie,F,545
 Olive,F,539
 Emily,F,537
 Della,F,534
-Doris,F,531
+Doris,F,530
 Nancy,F,519
 Lydia,F,507
 Anne,F,504
@@ -1977,7 +1977,7 @@ Samuel,M,628
 Howard,M,584
 Herbert,M,573
 Francis,M,543
-Lawrence,M,536
+Lawrence,M,535
 Elmer,M,520
 Alfred,M,506
 Andrew,M,480
@@ -2186,12 +2186,12 @@ Byron,M,51
 Wilson,M,51
 Anton,M,50
 Bob,M,49
-Elwood,M,49
 Fredrick,M,49
 Grover,M,49
 Mose,M,49
 Abe,M,48
 Don,M,48
+Elwood,M,48
 Johnny,M,48
 Wilfred,M,47
 Carroll,M,46

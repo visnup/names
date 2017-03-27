@@ -146,7 +146,7 @@ Henrietta,F,468
 Naomi,F,458
 Madeline,F,457
 Essie,F,451
-Rebecca,F,450
+Rebecca,F,451
 Caroline,F,449
 Nina,F,449
 Ollie,F,447
@@ -1941,6 +1941,7 @@ Ezell,F,6
 Ezma,F,6
 Fanchon,F,6
 Felecia,F,6
+Fronnie,F,6
 Gayle,F,6
 Georga,F,6
 Gillie,F,6
@@ -2234,7 +2235,6 @@ Francesca,F,5
 Frederick,F,5
 Fredericka,F,5
 Fredrica,F,5
-Fronnie,F,5
 Gearldine,F,5
 Gemma,F,5
 Genella,F,5
@@ -2451,8 +2451,8 @@ Arthur,M,1601
 Harold,M,1542
 Paul,M,1478
 Clarence,M,1428
-Raymond,M,1382
 Fred,M,1381
+Raymond,M,1381
 Louis,M,1317
 Richard,M,1244
 Joe,M,1209

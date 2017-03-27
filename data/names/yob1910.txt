@@ -4,7 +4,7 @@ Margaret,F,8226
 Dorothy,F,7318
 Ruth,F,7212
 Anna,F,6436
-Elizabeth,F,5799
+Elizabeth,F,5800
 Mildred,F,5692
 Marie,F,4790
 Alice,F,4671
@@ -90,7 +90,7 @@ Violet,F,1037
 Velma,F,1035
 Georgia,F,1010
 Sylvia,F,1000
-Lula,F,974
+Lula,F,975
 Ada,F,960
 Maggie,F,940
 Theresa,F,926
@@ -149,7 +149,7 @@ Geraldine,F,551
 Irma,F,547
 Ollie,F,538
 Rachel,F,538
-Lydia,F,536
+Lydia,F,537
 Henrietta,F,525
 Rebecca,F,519
 Lizzie,F,505
@@ -254,8 +254,8 @@ Annette,F,232
 Francis,F,227
 Helene,F,226
 Lee,F,224
-Teresa,F,221
 Jeanne,F,220
+Teresa,F,220
 Zelma,F,220
 Tillie,F,219
 Madge,F,217
@@ -2918,7 +2918,7 @@ Alex,M,256
 Earnest,M,255
 Patrick,M,254
 Isaac,M,252
-Jerry,M,252
+Jerry,M,251
 Wallace,M,251
 Guy,M,250
 Jose,M,249
@@ -2926,7 +2926,7 @@ Nathan,M,245
 Steve,M,245
 Nicholas,M,235
 Ira,M,233
-Nathaniel,M,233
+Nathaniel,M,232
 Ed,M,229
 Wayne,M,228
 Orville,M,223
@@ -3146,9 +3146,9 @@ Dick,M,52
 Emerson,M,52
 Freeman,M,52
 Meyer,M,52
+Clement,M,51
 Jackson,M,51
 Jimmy,M,51
-Clement,M,50
 Maynard,M,50
 Russel,M,50
 Ward,M,50
@@ -3178,10 +3178,10 @@ Lorenzo,M,46
 Major,M,46
 Pasquale,M,46
 Sterling,M,46
-Van,M,46
 Morgan,M,45
 Ned,M,45
 Taft,M,45
+Van,M,45
 Woodrow,M,45
 Dewitt,M,44
 Elliott,M,44
