@@ -27,7 +27,7 @@
     "babel-preset-react": "6.11.1",
     "babel-preset-stage-1": "6.5.0",
     "classnames": "2.2.5",
-    "compression": "1.6.2",
+    "compression": "1.7.2",
     "css-loader": "0.23.1",
     "d3": "3.5.17",
     "dsv-loader": "1.0.3",
