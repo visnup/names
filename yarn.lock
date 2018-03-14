@@ -2125,9 +2125,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-plugin-react@4.2.3:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-4.2.3.tgz#79aa0205b9cfe8c98f8747b04c7ee7d043be83df"
+eslint-plugin-react@4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-4.3.0.tgz#c79aac8069d62de27887c13b8298d592088de378"
 
 eslint@2.13.1:
   version "2.13.1"
