@@ -2316,25 +2316,25 @@ forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
 
-forever-monitor@~1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/forever-monitor/-/forever-monitor-1.6.0.tgz#3de1afd3e49f25712987281a252c02cb2463ad40"
+forever-monitor@~1.7.0:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/forever-monitor/-/forever-monitor-1.7.1.tgz#5d820f4a3a78db2d81ae2671f158b9e86a091bb8"
   dependencies:
     broadway "~0.3.6"
     chokidar "^1.0.1"
-    minimatch "~2.0.0"
+    minimatch "~3.0.2"
     ps-tree "0.0.x"
     utile "~0.2.1"
 
-forever@0.15.1:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/forever/-/forever-0.15.1.tgz#5e4e3d4ef946bef88ddcb9cc7412e478ad19e04e"
+forever@0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/forever/-/forever-0.15.3.tgz#77d9d7e15fd2f511ad9d84a110c7dd8fc8ecebc2"
   dependencies:
     cliff "~0.1.9"
     clone "^1.0.2"
     colors "~0.6.2"
     flatiron "~0.4.2"
-    forever-monitor "~1.6.0"
+    forever-monitor "~1.7.0"
     nconf "~0.6.9"
     nssocket "~0.5.1"
     object-assign "^3.0.0"
@@ -3322,17 +3322,11 @@ min-document@^2.19.0:
   dependencies:
     brace-expansion "^1.0.0"
 
-minimatch@^3.0.4:
+minimatch@^3.0.4, minimatch@~3.0.2:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
     brace-expansion "^1.1.7"
-
-minimatch@~2.0.0:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-2.0.10.tgz#8d087c39c6b38c001b97fca7ce6d0e1e80afbac7"
-  dependencies:
-    brace-expansion "^1.0.0"
 
 minimist@0.0.8, minimist@~0.0.1:
   version "0.0.8"
