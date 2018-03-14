@@ -60,7 +60,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "6.0.0",
+    "babel-eslint": "6.1.2",
     "babel-preset-react-hmre": "1.1.1",
     "eslint": "2.5.1",
     "eslint-plugin-react": "4.2.3",
