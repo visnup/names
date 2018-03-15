@@ -1957,9 +1957,9 @@ domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
-dsv-loader@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/dsv-loader/-/dsv-loader-1.1.0.tgz#230c782f6e58f452834f1aa1afb9c6340bd07d98"
+dsv-loader@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/dsv-loader/-/dsv-loader-2.0.0.tgz#a60e1c8bf88109ed6445f59428d985704e0bcc86"
   dependencies:
     d3-dsv "^1.0.0"
     loader-utils "^0.2.15"
