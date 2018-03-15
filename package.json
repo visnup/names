@@ -45,7 +45,7 @@
     "pg-query-stream": "1.1.1",
     "postcss-custom-properties": "5.0.2",
     "postcss-import": "8.1.2",
-    "postcss-loader": "0.9.1",
+    "postcss-loader": "0.13.0",
     "postcss-nested": "1.0.0",
     "react": "15.2.0",
     "react-dom": "15.2.0",
