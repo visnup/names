@@ -46,7 +46,7 @@
     "postcss-custom-properties": "5.0.2",
     "postcss-import": "8.1.2",
     "postcss-loader": "0.9.1",
-    "postcss-nested": "1.0.0",
+    "postcss-nested": "1.0.1",
     "react": "15.2.0",
     "react-dom": "15.2.0",
     "react-redux": "4.4.5",
