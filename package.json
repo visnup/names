@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "heroku-postinstall": "webpack --optimize-minimize",
+    "postinstall": "if [ -n \"$NPM_CONFIG_PRODUCTION\" ]; then webpack --optimize-minimize; fi",
     "start": "forever --watch server.js",
     "dev": "webpack-dev-server --hot --inline -d --devtool=cheap-module-eval-source-map"
   },
