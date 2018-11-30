@@ -57,7 +57,7 @@
     "throng": "4.0.0",
     "through": "2.3.8",
     "webpack": "1.13.1",
-    "whatwg-fetch": "1.0.0"
+    "whatwg-fetch": "1.1.1"
   },
   "devDependencies": {
     "babel-eslint": "6.1.2",
