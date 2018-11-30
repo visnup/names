@@ -52,7 +52,7 @@
     "react-redux": "4.4.5",
     "redux": "3.5.2",
     "redux-logger": "2.6.1",
-    "redux-thunk": "2.1.0",
+    "redux-thunk": "2.3.0",
     "style-loader": "0.13.1",
     "throng": "4.0.0",
     "through": "2.3.8",

@@ -4908,9 +4908,9 @@ redux-logger@2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-2.6.1.tgz#f558a40e3abd03feaf4e69ace4d71fec09803c74"
 
-redux-thunk@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.1.0.tgz#c724bfee75dbe352da2e3ba9bc14302badd89a98"
+redux-thunk@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 
 redux@3.5.2:
   version "3.5.2"
