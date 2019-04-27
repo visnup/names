@@ -1,4 +1,5 @@
 const { json } = require("micro");
+const cors = require("micro-cors")();
 const { BigQuery } = require("@google-cloud/bigquery");
 
 const credentials = JSON.parse(
@@ -6,7 +7,7 @@ const credentials = JSON.parse(
 );
 delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
-module.exports = async req => {
+module.exports = cors(async req => {
   const { query, params, location = "US" } = await json(req);
 
   const client = new BigQuery({
@@ -15,4 +16,4 @@ module.exports = async req => {
   });
   const [rows] = await client.query({ query, params, location });
   return rows;
-};
+});
