@@ -8,6 +8,8 @@ const credentials = JSON.parse(
 delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
 module.exports = cors(async req => {
+  if (req.method !== "POST") return {};
+
   const { query, params, location = "US" } = await json(req);
 
   const client = new BigQuery({
