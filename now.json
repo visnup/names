@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "builds": [{ "src": "*.js", "use": "now-micro" }],
+  "env": {
+    "GOOGLE_APPLICATION_CREDENTIALS": "@names-credentials-json"
+  }
+}
