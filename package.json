@@ -10,6 +10,7 @@
     "@google-cloud/bigquery": "^3.0.0",
     "micro": "^9.3.3",
     "micro-cors": "^0.1.1",
-    "now-micro": "^0.3.0"
+    "now-micro": "^0.3.0",
+    "serialize-error": "^4.1.0"
   }
 }
