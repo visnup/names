@@ -21,7 +21,7 @@ module.exports = cors(async (req, res) => {
     const [rows] = await client.query({ query, params, location: "US" });
     return rows;
   } catch (error) {
-    error.statusCode = 500;
+    res.statusCode = 500;
     delete error.stack;
     return serializeError(error);
   }
