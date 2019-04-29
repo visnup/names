@@ -1,3 +1,4 @@
+const { parse } = require("url");
 const { json, send } = require("micro");
 const cors = require("micro-cors")();
 const serializeError = require("serialize-error");
@@ -10,9 +11,13 @@ const client = new BigQuery({ credentials, projectId: credentials.project_id });
 
 module.exports = cors(async (req, res) => {
   try {
-    if (req.method !== "POST") return {};
-    const { query, params, location = "US" } = await json(req);
-    const [rows] = await client.query({ query, params, location });
+    let query, params;
+    if (req.method === "POST") ({ query, params } = await json(req));
+    else if (req.method === "GET")
+      ({ query, params } = parse(req.url, true).query);
+    else return {};
+
+    const [rows] = await client.query({ query, params, location: "US" });
     return rows;
   } catch (error) {
     send(res, 500, serializeError(error));
