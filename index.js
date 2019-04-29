@@ -17,6 +17,7 @@ module.exports = cors(async (req, res) => {
       ({ query, params } = parse(req.url, true).query);
     else return {};
 
+    console.log({ query, params });
     const [rows] = await client.query({ query, params, location: "US" });
     return rows;
   } catch (error) {
