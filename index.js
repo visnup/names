@@ -1,5 +1,5 @@
 const { parse } = require("url");
-const { json, send } = require("micro");
+const { json } = require("micro");
 const cors = require("micro-cors")();
 const serializeError = require("serialize-error");
 const { BigQuery } = require("@google-cloud/bigquery");
@@ -21,6 +21,8 @@ module.exports = cors(async (req, res) => {
     const [rows] = await client.query({ query, params, location: "US" });
     return rows;
   } catch (error) {
-    send(res, 500, serializeError(error));
+    error.statusCode = 500;
+    delete error.stack;
+    return serializeError(error);
   }
 });
